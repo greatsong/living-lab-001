@@ -1,0 +1,1475 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter12/">
+      
+      
+        <link rel="next" href="../chapter14/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>센서 조합의 힘 - 복합 감지 시스템 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#13-" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            교실 리빙랩: 측정을 넘어 문제해결까지
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              센서 조합의 힘 - 복합 감지 시스템
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 입력과 출력의 기초
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter08/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 거리와 빛으로 세상 감지
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    교실 리빙랩: 측정을 넘어 문제해결까지
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 켜다 - LED 제어의 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소리를 내다 - 부저 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    버튼을 읽다 - 디지털 입력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 통합 미션 - 나만의 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 숫자로 - 조도센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리에 반응하는 신호등 - 조건문 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        센서 하나로는 부족해!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실생활 속 복합 센서 시스템
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-and-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 복합 조건 (AND / OR 논리)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 센서 조합 설계 패턴
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 센서 동시 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 두 센서 동시에 연결하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: AND 조건으로 스마트 조명 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 통합 미션 - 스마트 접근 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        센서 하나로는 부족해!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실생활 속 복합 센서 시스템
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-and-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 복합 조건 (AND / OR 논리)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 센서 조합 설계 패턴
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 센서 동시 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 두 센서 동시에 연결하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: AND 조건으로 스마트 조명 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="13-">챕터 13: 센서 조합의 힘 - 복합 감지 시스템<a class="headerlink" href="#13-" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 두 개 이상의 센서를 동시에 연결하고 값을 읽을 수 있다</li>
+<li>[ ] AND/OR 논리로 복합 조건을 작성할 수 있다</li>
+<li>[ ] 조도센서와 초음파 센서를 조합한 스마트 시스템을 만들 수 있다</li>
+<li>[ ] 실제 문제 해결을 위한 센서 조합을 설계할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">센서 하나로는 부족해!<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>지금까지 조도센서, 초음파 센서를 각각 사용해봤어. 그런데 실제 스마트 시스템은 <strong>센서 하나만</strong> 쓰는 경우가 거의 없어.</p>
+<div class="highlight"><pre><span></span><code>[현관 자동 조명의 비밀]
+
+❌ 조도센서만 있으면?
+   → 낮에도 손으로 가리면 조명이 켜짐 (낭비!)
+
+❌ 거리센서만 있으면?  
+   → 밝은 대낮에도 사람 오면 조명이 켜짐 (낭비!)
+
+✅ 조도 + 거리 둘 다 있으면?
+   → &quot;어둡고 AND 사람이 가까이 오면&quot; 조명 켜짐 (완벽!)
+</code></pre></div>
+<h3 id="_4">실생활 속 복합 센서 시스템<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│  🚗 자동차 후방 카메라                                       │
+│     거리센서 + 카메라 = 가까울 때만 화면 표시                  │
+│                                                             │
+│  🏠 스마트 홈 조명                                           │
+│     조도 + 모션 + 시간 = 필요할 때만 자동 점등                 │
+│                                                             │
+│  📱 스마트폰 화면 밝기                                       │
+│     조도 + 근접센서 = 통화 중엔 화면 끔                       │
+│                                                             │
+│  🚽 자동 비데                                                │
+│     거리 + 온도 + 착석감지 = 사람 앉으면 작동                  │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>이번 챕터에서 배우는 핵심:</strong></p>
+<blockquote>
+<p>센서를 <strong>조합</strong>하면 더 <strong>똑똑하고 효율적인</strong> 시스템이 된다!</p>
+</blockquote>
+<hr />
+<h2 id="_5">📚 핵심 개념<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1-and-or">개념 1: 복합 조건 (AND / OR 논리)<a class="headerlink" href="#1-and-or" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 복합 조건은 마치 <strong>놀이공원 입장 조건</strong>과 같아요.
+- "키 120cm 이상 <strong>AND</strong> 7세 이상" → 둘 다 만족해야 탈 수 있음
+- "학생증 <strong>OR</strong> 청소년증" → 둘 중 하나만 있어도 할인</p>
+<p><strong>정확한 정의</strong>: 프로그래밍에서 <code>and</code>는 <strong>모든 조건이 참</strong>일 때만 참, <code>or</code>는 <strong>하나라도 참</strong>이면 참이야.</p>
+<p><strong>예시로 확인</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># AND 조건 - 둘 다 만족해야 함</span>
+<span class="n">어둡다</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">가깝다</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">어둡다</span> <span class="ow">and</span> <span class="n">가깝다</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;조명 켜기!&quot;</span><span class="p">)</span>  <span class="c1"># 이게 실행됨</span>
+
+<span class="c1"># OR 조건 - 하나만 만족해도 됨</span>
+<span class="n">버튼_눌림</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">소리_감지</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">버튼_눌림</span> <span class="ow">or</span> <span class="n">소리_감지</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;알림 울리기!&quot;</span><span class="p">)</span>  <span class="c1"># 이것도 실행됨</span>
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: <code>and</code>는 "그리고", <code>or</code>는 "또는"이야!</p>
+<hr />
+<h3 id="2">개념 2: 센서 조합 설계 패턴<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 센서 조합은 마치 <strong>요리 레시피</strong>와 같아요. 재료(센서)를 어떻게 조합하느냐에 따라 완전히 다른 요리(시스템)가 나와요.</p>
+<p><strong>대표적인 조합 패턴</strong>:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│  패턴 1: 조건 필터링 (AND)                                   │
+│  ──────────────────────                                     │
+│  &quot;A이면서 B일 때만&quot; 동작                                     │
+│                                                             │
+│  예시: 어두울 때만 거리 감지 작동                             │
+│  ┌───────┐    ┌───────┐    ┌───────┐                       │
+│  │ 조도  │───▶│ AND?  │───▶│ 거리  │───▶ LED              │
+│  │ 어둡냐│    │       │    │ 가깝냐│                       │
+│  └───────┘    └───────┘    └───────┘                       │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│  패턴 2: 다중 트리거 (OR)                                    │
+│  ──────────────────────                                     │
+│  &quot;A거나 B면&quot; 동작                                            │
+│                                                             │
+│  예시: 버튼 누르거나 손 가까이 오면 알림                       │
+│  ┌───────┐                                                  │
+│  │ 버튼  │───┐                                              │
+│  └───────┘   │   ┌───────┐                                  │
+│              ├──▶│  OR?  │───▶ 부저                        │
+│  ┌───────┐   │   └───────┘                                  │
+│  │ 거리  │───┘                                              │
+│  └───────┘                                                  │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│  패턴 3: 단계적 반응                                         │
+│  ──────────────────────                                     │
+│  센서 값에 따라 다른 동작                                    │
+│                                                             │
+│  예시: 거리에 따라 다른 색 LED                               │
+│  ┌───────┐    ┌────────────────────────────┐               │
+│  │ 거리  │───▶│ &gt;50cm: 초록  │ 20-50: 노랑 │───▶ LED       │
+│  │ 센서  │    │ &lt;20cm: 빨강  │             │               │
+│  └───────┘    └────────────────────────────┘               │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 센서 여러 개를 <strong>어떤 규칙으로 연결</strong>하느냐가 설계의 핵심이야!</p>
+<hr />
+<h3 id="3">개념 3: 센서 동시 읽기<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: 센서 동시 읽기는 마치 <strong>두 손으로 동시에 온도계와 습도계 확인</strong>하는 것과 같아요.</p>
+<p><strong>정확한 정의</strong>: 하나의 프로그램에서 여러 센서의 값을 순서대로 빠르게 읽어서 마치 동시에 읽는 것처럼 처리해.</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># 센서 1 읽기</span>
+    <span class="n">밝기</span> <span class="o">=</span> <span class="n">조도센서</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># 센서 2 읽기  </span>
+    <span class="n">거리</span> <span class="o">=</span> <span class="n">초음파센서</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># 둘 다 사용해서 판단</span>
+    <span class="k">if</span> <span class="n">밝기</span> <span class="o">&lt;</span> <span class="mi">1000</span> <span class="ow">and</span> <span class="n">거리</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="n">LED</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># 0.1초마다 반복</span>
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 컴퓨터가 매우 빨라서 순서대로 읽어도 "동시"처럼 느껴지는 거야!</p>
+<hr />
+<h2 id="_6">🔨 따라하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 두 센서 동시에 연결하기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 조도센서와 초음파 센서를 동시에 Pico에 연결하고 값 읽기</p>
+<p><strong>회로 연결</strong>:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    Pico + Grove Shield                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌──────────────┐     연결:                                 │
+│  │              │                                           │
+│  │   [조도]     │────▶ A0 (아날로그)                        │
+│  │              │                                           │
+│  │   [초음파]   │────▶ D16 (디지털)                         │
+│  │              │                                           │
+│  │   [LED 빨강] │────▶ D18                                  │
+│  │   [LED 노랑] │────▶ D19                                  │
+│  │   [LED 초록] │────▶ D20                                  │
+│  │              │                                           │
+│  │   [부저]     │────▶ D21                                  │
+│  │              │                                           │
+│  └──────────────┘                                           │
+│                                                             │
+│  💡 팁: Grove Shield 덕분에 여러 센서를 쉽게 연결!           │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>코드</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 두 센서 동시에 값 읽기 ===</span>
+<span class="c1"># 조도센서와 초음파 센서의 값을 동시에 읽어서 출력</span>
+
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">ADC</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># --- WHY: 각 센서마다 다른 방식으로 연결 ---</span>
+<span class="c1"># 조도센서 = 아날로그 (0~65535 범위의 숫자)</span>
+<span class="c1"># 초음파 = 디지털 (시간 측정으로 거리 계산)</span>
+
+<span class="c1"># HOW: 조도센서 설정 (아날로그 입력)</span>
+<span class="n">light_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>  <span class="c1"># A0 = GP26</span>
+
+<span class="c1"># HOW: 초음파 센서 설정 (Trigger와 Echo 핀)</span>
+<span class="n">trigger</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># 신호 보내는 핀</span>
+<span class="n">echo</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>       <span class="c1"># 신호 받는 핀</span>
+
+<span class="c1"># --- 초음파 센서로 거리 측정하는 함수 ---</span>
+<span class="k">def</span> <span class="nf">get_distance</span><span class="p">():</span>
+    <span class="c1"># 초음파 신호 보내기</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+
+    <span class="c1"># 신호가 돌아오는 시간 측정</span>
+    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_us</span><span class="p">()</span>
+    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_us</span><span class="p">()</span>
+
+    <span class="c1"># 시간 → 거리 변환 (소리 속도 이용)</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">(</span><span class="n">duration</span> <span class="o">*</span> <span class="mf">0.0343</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># cm 단위</span>
+
+    <span class="k">return</span> <span class="n">distance</span>
+
+<span class="c1"># --- 메인 루프: 두 센서 동시에 읽기 ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 두 센서 동시 읽기 시작! ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;조도센서와 초음파 센서 값을 확인해보세요&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># 센서 1: 조도 읽기</span>
+    <span class="n">light_value</span> <span class="o">=</span> <span class="n">light_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+    <span class="c1"># 센서 2: 거리 읽기</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">get_distance</span><span class="p">()</span>
+
+    <span class="c1"># 두 값 함께 출력</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;밝기: </span><span class="si">{</span><span class="n">light_value</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2"> | 거리: </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">5.1f</span><span class="si">}</span><span class="s2">cm&quot;</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 0.5초마다 측정</span>
+</code></pre></div>
+<p><strong>실행 결과</strong>:
+<div class="highlight"><pre><span></span><code>=== 두 센서 동시 읽기 시작! ===
+조도센서와 초음파 센서 값을 확인해보세요
+
+밝기: 45230 | 거리:  85.3cm
+밝기: 44890 | 거리:  42.1cm
+밝기: 12340 | 거리:  15.7cm  ← 손으로 가리고 가까이 댐
+밝기: 11200 | 거리:   8.2cm
+</code></pre></div></p>
+<p><strong>여기서 잠깐! 🤔</strong></p>
+<blockquote>
+<p><strong>센서가 "동시에" 읽히는 걸까?</strong></p>
+<p>사실 컴퓨터는 한 번에 하나씩 순서대로 읽어. 하지만 너무 빨라서 (0.001초도 안 걸림) 우리 눈엔 동시처럼 보여!</p>
+<div class="highlight"><pre><span></span><code>시간 흐름 →
+────────────────────────────────────
+[조도 읽기] [거리 읽기] [출력] [0.5초 대기] [반복...]
+   0.001초    0.01초    0.001초
+</code></pre></div>
+</blockquote>
+<hr />
+<h3 id="step-2-and">Step 2: AND 조건으로 스마트 조명 만들기<a class="headerlink" href="#step-2-and" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: "어둡고 AND 가까이 오면" LED가 켜지는 스마트 조명</p>
+<p>```
+┌─────────────────────────────────────────────────────────────┐
+│  📋 동작 시나리오                                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  조건 1: 밝기 &lt; 20000 (어두움)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

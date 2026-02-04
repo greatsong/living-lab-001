@@ -1,0 +1,1656 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter03/">
+      
+      
+        <link rel="next" href="../chapter05/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>밝기를 조절하다 - PWM의 마법 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-pwm" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            교실 리빙랩: 측정을 넘어 문제해결까지
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              밝기를 조절하다 - PWM의 마법
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 입력과 출력의 기초
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter08/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 거리와 빛으로 세상 감지
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    교실 리빙랩: 측정을 넘어 문제해결까지
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 켜다 - LED 제어의 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 디지털의 한계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 1: 디지털의 한계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pwm-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: PWM의 마법 - 눈속임의 과학
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 2: PWM의 마법 - 눈속임의 과학">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-duty-cycle-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 듀티 사이클 (Duty Cycle) - 밝기의 열쇠
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 3: 듀티 사이클 (Duty Cycle) - 밝기의 열쇠">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-frequency-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 주파수 (Frequency) - 얼마나 빨리 깜빡이나
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 4: 주파수 (Frequency) - 얼마나 빨리 깜빡이나">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 알아보기: PWM의 핵심 두 가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소리를 내다 - 부저 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    버튼을 읽다 - 디지털 입력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 통합 미션 - 나만의 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 숫자로 - 조도센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리에 반응하는 신호등 - 조건문 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 통합 미션 - 스마트 접근 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 디지털의 한계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 1: 디지털의 한계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pwm-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: PWM의 마법 - 눈속임의 과학
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 2: PWM의 마법 - 눈속임의 과학">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-duty-cycle-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 듀티 사이클 (Duty Cycle) - 밝기의 열쇠
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 3: 듀티 사이클 (Duty Cycle) - 밝기의 열쇠">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-frequency-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 주파수 (Frequency) - 얼마나 빨리 깜빡이나
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 4: 주파수 (Frequency) - 얼마나 빨리 깜빡이나">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1단계: 비유로 시작
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2단계: 정확한 정의
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3단계: 예시로 확인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 알아보기: PWM의 핵심 두 가지
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="-pwm">밝기를 조절하다 - PWM의 마법<a class="headerlink" href="#-pwm" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] PWM(펄스 폭 변조)의 원리를 설명할 수 있다</li>
+<li>[ ] PWM의 주파수와 듀티 사이클 개념을 이해한다</li>
+<li>[ ] LED의 밝기를 0%부터 100%까지 단계적으로 조절할 수 있다</li>
+<li>[ ] 부드럽게 밝아졌다 어두워지는 breathing 효과를 구현할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>지난 장에서 LED를 켜고 끄는 법을 배웠어. 그런데 한 가지 아쉬운 점이 있지 않아?</p>
+<p><strong>"LED 밝기를 중간쯤으로 할 수는 없을까?"</strong></p>
+<p>스마트폰 화면 밝기, 노트북 키보드 백라이트, 침대 옆 무드등... 
+우리 주변의 조명들은 대부분 밝기 조절이 가능해.</p>
+<div class="highlight"><pre><span></span><code>일상 속 밝기 조절 예시:
+┌─────────────────────────────────────────────────────────┐
+│  📱 스마트폰 화면    [████████░░] 80%                   │
+│  💡 스탠드 조명      [██████░░░░] 60%                   │
+│  🌙 취침 무드등      [██░░░░░░░░] 20%                   │
+│  🎮 게이밍 키보드    [██████████] 100% (반짝반짝!)      │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>그런데 이상하지 않아? 디지털 신호는 0(꺼짐)과 1(켜짐)밖에 없다고 했는데, 어떻게 "중간 밝기"가 가능한 걸까?</p>
+<p><strong>비밀은 바로 PWM(Pulse Width Modulation, 펄스 폭 변조)에 있어!</strong></p>
+<p>이번 장에서 PWM을 배우면:
+- 🌈 LED 밝기를 자유자재로 조절할 수 있어
+- 🫁 숨 쉬는 것처럼 부드럽게 변하는 breathing 효과를 만들 수 있어
+- 🔧 나중에 모터 속도 조절(선풍기!)에도 똑같은 원리를 적용할 수 있어</p>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">개념 1: 디지털의 한계<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1단계: 비유로 시작<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>"디지털 신호는 마치 <strong>방의 조명 스위치</strong>와 같아요. 켜거나 끄거나, 둘 중 하나만 가능해요."</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>디지털 신호의 세계:
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│    3.3V ─────────┐         ┌─────────┐         ┌──     │
+│         (켜짐)   │         │         │         │       │
+│                  │         │         │         │       │
+│      0V ─────────┴─────────┴─────────┴─────────┴──     │
+│         (꺼짐)                                          │
+│                                                         │
+│    → 높거나 낮거나, 딱 두 가지 상태만 존재!             │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h4 id="2">2단계: 정확한 정의<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>디지털 출력은 <strong>HIGH(3.3V)</strong>와 <strong>LOW(0V)</strong> 두 가지 상태만 가져. 
+"2.5V로 출력해줘"라고 명령할 수 없어. 중간값이란 게 없는 거지.</p>
+<h4 id="3">3단계: 예시로 확인<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 디지털 출력의 한계</span>
+<span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 완전히 켜짐 (3.3V) - 100%</span>
+<span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 완전히 꺼짐 (0V) - 0%</span>
+<span class="c1"># led.value(0.5)?  # 이런 건 없어! ❌</span>
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 디지털은 "켜짐/꺼짐" 두 가지뿐이라 중간 밝기를 직접 만들 수 없어.</p>
+<hr />
+<h3 id="2-pwm-">개념 2: PWM의 마법 - 눈속임의 과학<a class="headerlink" href="#2-pwm-" title="Permanent link">&para;</a></h3>
+<h4 id="1_2">1단계: 비유로 시작<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>"PWM은 마치 <strong>아주 빠르게 손뼉을 쳐서 바람을 만드는 것</strong>과 같아요. 
+빠르게 ON/OFF를 반복하면, 우리 눈은 평균 밝기로 인식해요."</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>PWM의 비밀: 빠른 깜빡임 = 중간 밝기!
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│   실제 신호 (확대해서 보면):                              │
+│   ┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐     │
+│   │  │  │  │  │  │  │  │  │  │  │  │  │  │  │  │     │
+│   ┘  └──┘  └──┘  └──┘  └──┘  └──┘  └──┘  └──┘  └──    │
+│                                                         │
+│   우리 눈이 인식하는 것:                                  │
+│   ═══════════════════════════════════════════════════   │
+│   &quot;어? 그냥 중간 밝기잖아?&quot;                              │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h4 id="2_1">2단계: 정확한 정의<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<p><strong>PWM(Pulse Width Modulation, 펄스 폭 변조)</strong>은 디지털 신호를 아주 빠르게 ON/OFF 반복해서, 마치 아날로그처럼 중간값을 만들어내는 기술이야.</p>
+<p>핵심 원리:
+- 1초에 수천~수만 번 깜빡임
+- 사람의 눈은 약 60Hz 이상을 구분 못 함
+- 결과적으로 "평균 밝기"로 인식</p>
+<h4 id="3_1">3단계: 예시로 확인<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>영화 원리와 같아!
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│   영화: 1초에 24장의 사진 → 움직이는 영상으로 보임       │
+│                                                         │
+│   PWM: 1초에 1000번 깜빡임 → 중간 밝기로 보임            │
+│                                                         │
+│   둘 다 &quot;눈의 잔상 효과&quot;를 이용한 눈속임!               │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 아주 빠르게 껐다 켰다 하면, 눈은 평균 밝기로 인식해!</p>
+<hr />
+<h3 id="3-duty-cycle-">개념 3: 듀티 사이클 (Duty Cycle) - 밝기의 열쇠<a class="headerlink" href="#3-duty-cycle-" title="Permanent link">&para;</a></h3>
+<h4 id="1_3">1단계: 비유로 시작<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>"듀티 사이클은 마치 <strong>하루 중 일하는 시간의 비율</strong>과 같아요. 
+8시간 일하면 33%, 12시간 일하면 50%, 24시간 내내 일하면 100%!"</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>듀티 사이클 = 켜져 있는 시간의 비율
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│   한 주기 (1 cycle)                                      │
+│   ├──────────────────────────────────────────────┤      │
+│                                                         │
+│   ┌─────────────────┐                                   │
+│   │     켜짐 ON     │     꺼짐 OFF                      │
+│   └─────────────────┴────────────────────────────┘      │
+│                                                         │
+│   듀티 사이클 = ON 시간 ÷ 전체 시간 × 100%              │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h4 id="2_2">2단계: 정확한 정의<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
+<p><strong>듀티 사이클(Duty Cycle)</strong>은 한 주기 동안 신호가 HIGH(켜짐) 상태인 시간의 비율이야.</p>
+<ul>
+<li>듀티 사이클 0% = 항상 꺼짐 (밝기 0%)</li>
+<li>듀티 사이클 50% = 절반 켜짐, 절반 꺼짐 (밝기 50%)</li>
+<li>듀티 사이클 100% = 항상 켜짐 (밝기 100%)</li>
+</ul>
+<h4 id="3_2">3단계: 예시로 확인<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>듀티 사이클에 따른 밝기 변화:
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│   25% 듀티 사이클 → 어두움                               │
+│   ┌─┐   ┌─┐   ┌─┐   ┌─┐   ┌─┐                          │
+│   │ │   │ │   │ │   │ │   │ │     💡 (어둡게)          │
+│   ┘ └───┘ └───┘ └───┘ └───┘ └───                       │
+│                                                         │
+│   50% 듀티 사이클 → 중간 밝기                            │
+│   ┌───┐   ┌───┐   ┌───┐   ┌───┐                        │
+│   │   │   │   │   │   │   │   │   💡💡 (중간)          │
+│   ┘   └───┘   └───┘   └───┘   └───                     │
+│                                                         │
+│   75% 듀티 사이클 → 밝음                                 │
+│   ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐                      │
+│   │     │ │     │ │     │ │     │ 💡💡💡 (밝게)        │
+│   ┘     └─┘     └─┘     └─┘     └─                     │
+│                                                         │
+│   100% 듀티 사이클 → 최대 밝기                           │
+│   ────────────────────────────────  💡💡💡💡 (최대!)    │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 듀티 사이클이 높을수록 LED가 더 밝아져!</p>
+<hr />
+<h3 id="4-frequency-">개념 4: 주파수 (Frequency) - 얼마나 빨리 깜빡이나<a class="headerlink" href="#4-frequency-" title="Permanent link">&para;</a></h3>
+<h4 id="1_4">1단계: 비유로 시작<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>"주파수는 마치 <strong>심장 박동 속도</strong>와 같아요. 
+1초에 몇 번 뛰는지를 나타내요."</p>
+</blockquote>
+<h4 id="2_3">2단계: 정확한 정의<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<p><strong>주파수(Frequency)</strong>는 1초 동안 ON-OFF를 몇 번 반복하는지를 나타내. 단위는 Hz(헤르츠).</p>
+<ul>
+<li>1000Hz = 1초에 1000번 깜빡임</li>
+<li>주파수가 높을수록 더 부드러워 보임</li>
+<li>LED에는 보통 500~5000Hz 사용</li>
+</ul>
+<div class="highlight"><pre><span></span><code>주파수와 사람 눈의 관계:
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│   10Hz (1초에 10번)   → 깜빡이는 게 보임 😵             │
+│   60Hz (1초에 60번)   → 거의 안 보임 😊                 │
+│   1000Hz (1초에 1000번) → 전혀 안 보임 ✨               │
+│                                                         │
+│   ※ 일반적으로 60Hz 이상이면 깜빡임을 감지 못함         │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h4 id="3_3">3단계: 예시로 확인<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pico에서 PWM 주파수 설정</span>
+<span class="n">pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># 1초에 1000번 깜빡임 (충분히 빠름!)</span>
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: 주파수는 "1초에 몇 번 깜빡이나"이고, 빠를수록 자연스러워!</p>
+<hr />
+<h3 id="pwm">📌 알아보기: PWM의 핵심 두 가지<a class="headerlink" href="#pwm" title="Permanent link">&para;</a></h3>
+<p>```
+┌─────────────────────────────────────────────────────────┐
+│                    PWM 제어의 핵심                       │
+├────────────────────────┬────────────────────────────────┤
+│       주파수 (freq)    │     듀티 사이클 (duty)          │
+├────────────────────────┼────────────────────────────────┤
+│ 얼마나 빨리 깜빡이나   │ 켜져 있는 시간의 비율           │
+│                        │                                │
+│ 단위: Hz (헤르츠)      │ 단위: % (퍼센트)               │
+│                        │                                │
+│ 너무 낮으면:           │ 0% = 꺼짐                      │</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

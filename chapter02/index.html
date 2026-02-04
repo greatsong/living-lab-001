@@ -1,0 +1,1298 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter01/">
+      
+      
+        <link rel="next" href="../chapter03/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Pico와 첫 만남 - 개발환경 설정 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-02-pico-" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            교실 리빙랩: 측정을 넘어 문제해결까지
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pico와 첫 만남 - 개발환경 설정
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 입력과 출력의 기초
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter08/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 거리와 빛으로 세상 감지
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    교실 리빙랩: 측정을 넘어 문제해결까지
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-raspberry-pi-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: Raspberry Pi Pico란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: GPIO 핀이란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-grove-shield" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: Grove Shield란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-thonny-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: Thonny IDE란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 켜다 - LED 제어의 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소리를 내다 - 부저 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    버튼을 읽다 - 디지털 입력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 통합 미션 - 나만의 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 숫자로 - 조도센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리에 반응하는 신호등 - 조건문 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 통합 미션 - 스마트 접근 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-raspberry-pi-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: Raspberry Pi Pico란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: GPIO 핀이란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-grove-shield" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: Grove Shield란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-thonny-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: Thonny IDE란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-02-pico-">Chapter 02: Pico와 첫 만남 - 개발환경 설정<a class="headerlink" href="#chapter-02-pico-" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Raspberry Pi Pico가 무엇인지 설명할 수 있다</li>
+<li>[ ] Grove Shield의 역할과 장점을 이해할 수 있다</li>
+<li>[ ] Thonny IDE를 설치하고 Pico와 연결할 수 있다</li>
+<li>[ ] 첫 번째 Python 코드를 Pico에서 실행할 수 있다</li>
+<li>[ ] 코드가 컴퓨터에서 Pico로 전송되는 과정을 설명할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>상상해봐. 네가 만든 코드가 컴퓨터 화면 속에만 있는 게 아니라, <strong>실제 세상에서 LED를 켜고, 모터를 돌리고, 센서로 온도를 측정</strong>한다면?</p>
+<p>이게 바로 <strong>피지컬 컴퓨팅(Physical Computing)</strong>이야.</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│   일반 프로그래밍           vs       피지컬 컴퓨팅          │
+│                                                             │
+│   ┌─────────────┐               ┌─────────────┐            │
+│   │  컴퓨터     │               │  컴퓨터     │            │
+│   │  ┌───────┐  │               │  ┌───────┐  │            │
+│   │  │ 코드  │  │               │  │ 코드  │  │            │
+│   │  └───────┘  │               │  └───┬───┘  │            │
+│   │      ↓      │               │      ↓      │            │
+│   │  ┌───────┐  │               └──────┼──────┘            │
+│   │  │ 화면  │  │                      ↓                   │
+│   │  └───────┘  │               ┌─────────────┐            │
+│   └─────────────┘               │    Pico     │            │
+│                                 │  ┌───────┐  │            │
+│   결과: 화면에 출력              │  │ 센서  │──┼──→ 실제 세상│
+│                                 │  │ LED   │  │            │
+│                                 │  │ 모터  │  │            │
+│                                 │  └───────┘  │            │
+│                                 └─────────────┘            │
+│                                                             │
+│                                 결과: 실제 세상이 바뀜!     │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>이 수업에서 우리는 <strong>"측정만 하지 말고, 학교를 바꿔보자"</strong>는 목표로 진행해. 
+온도가 높으면 자동으로 선풍기가 돌아가게 하고, 소음이 심하면 경고등이 켜지게 만들 거야.</p>
+<p>그 첫 걸음이 바로 <strong>개발 환경 설정</strong>이야. 
+요리를 시작하기 전에 주방을 세팅하는 것처럼, 코딩을 시작하기 전에 도구를 준비하는 거지!</p>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-raspberry-pi-pico">개념 1: Raspberry Pi Pico란?<a class="headerlink" href="#1-raspberry-pi-pico" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: Pico는 마치 <strong>아주 작은 뇌</strong>와 같아. 
+우리 뇌가 눈으로 보고(입력), 생각하고(처리), 손을 움직이는(출력) 것처럼,
+Pico도 센서로 감지하고, 코드로 판단하고, LED나 모터를 제어해.</p>
+<p><strong>정확한 정의</strong>: Raspberry Pi Pico는 영국 라즈베리파이 재단에서 만든 <strong>마이크로컨트롤러(Microcontroller)</strong>야. 
+손가락 두 마디 정도 크기지만, 센서를 읽고 다양한 부품을 제어할 수 있는 작은 컴퓨터야.</p>
+<p><strong>예시로 확인</strong>: 
+- 온도 센서를 연결하면 → 온도를 측정할 수 있어
+- LED를 연결하면 → 빛을 켜고 끌 수 있어
+- 모터를 연결하면 → 바람을 일으킬 수 있어</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│              Raspberry Pi Pico 실물 크기 (약 51mm x 21mm)   │
+│                                                             │
+│    ┌─────────────────────────────────────────────────────┐  │
+│    │ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ │  │
+│    │                                                     │  │
+│    │     ┌─────────┐                    ┌────┐          │  │
+│    │     │ RP2040  │   Raspberry Pi     │USB │          │  │
+│    │     │  Chip   │      Pico          │    │          │  │
+│    │     └─────────┘                    └────┘          │  │
+│    │                                                     │  │
+│    │ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ │  │
+│    └─────────────────────────────────────────────────────┘  │
+│                                                             │
+│    ↑ 이 구멍들(○)이 GPIO 핀 - 센서나 부품을 연결하는 곳     │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: Pico는 <strong>손바닥 위의 작은 컴퓨터</strong>로, 센서를 읽고 부품을 제어하는 일을 해!</p>
+<hr />
+<h3 id="2-gpio">개념 2: GPIO 핀이란?<a class="headerlink" href="#2-gpio" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: GPIO 핀은 마치 <strong>콘센트</strong>와 같아. 
+집에서 전자제품을 콘센트에 꽂아서 사용하듯이, Pico에서는 센서나 LED를 GPIO 핀에 연결해서 사용해.</p>
+<p><strong>정확한 정의</strong>: GPIO는 <strong>General Purpose Input/Output</strong>의 약자야.
+"범용 입출력"이라는 뜻인데, 쉽게 말해 <strong>"아무 용도로나 쓸 수 있는 연결 단자"</strong>야.</p>
+<p><strong>예시로 확인</strong>:
+- <strong>입력(Input)으로 사용</strong>: 버튼이 눌렸는지 확인, 온도 센서 값 읽기
+- <strong>출력(Output)으로 사용</strong>: LED 켜기, 모터 돌리기, 부저 울리기</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│                    GPIO 핀의 역할                           │
+│                                                             │
+│    ┌──────────┐           ┌──────────┐                     │
+│    │  센서    │           │   LED    │                     │
+│    │ (온도)   │           │  (빛)    │                     │
+│    └────┬─────┘           └────┬─────┘                     │
+│         │                      │                           │
+│         ↓ 입력                 ↑ 출력                      │
+│    ┌────┴──────────────────────┴────┐                      │
+│    │         GPIO 핀들              │                      │
+│    │  ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○  │                      │
+│    │           Pico                 │                      │
+│    └────────────────────────────────┘                      │
+│                                                             │
+│    - 입력 핀: 바깥 세상 → Pico (정보를 받아들임)            │
+│    - 출력 핀: Pico → 바깥 세상 (명령을 내보냄)              │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: GPIO 핀은 <strong>Pico가 바깥 세상과 소통하는 통로</strong>야!</p>
+<hr />
+<h3 id="3-grove-shield">개념 3: Grove Shield란?<a class="headerlink" href="#3-grove-shield" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: Grove Shield는 마치 <strong>멀티탭(멀티콘센트)</strong>과 같아.
+콘센트 하나에 멀티탭을 꽂으면 여러 기기를 쉽게 연결할 수 있잖아?
+Grove Shield도 Pico에 꽂으면 여러 센서와 부품을 <strong>케이블 하나로 쉽게</strong> 연결할 수 있어.</p>
+<p><strong>정확한 정의</strong>: Grove Shield는 <strong>Seeed Studio</strong>에서 만든 확장 보드야.
+Pico 위에 끼우면 Grove 규격의 센서와 부품을 <strong>4핀 케이블 하나로</strong> 연결할 수 있어.
+복잡한 배선이나 납땜 없이도 다양한 프로젝트를 만들 수 있지!</p>
+<p><strong>예시로 확인</strong>:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│           Grove Shield 없이 vs Grove Shield 사용            │
+│                                                             │
+│   [복잡한 방법]                    [쉬운 방법]              │
+│                                                             │
+│   빨강선──┐                        ┌─────────────┐         │
+│   검정선──┼──→ Pico               │ Grove Shield│         │
+│   노랑선──┤    (어디 꽂지?)        │ ┌─┐ ┌─┐ ┌─┐│         │
+│   하양선──┘                        │ │○│ │○│ │○││         │
+│                                    │ └─┘ └─┘ └─┘│         │
+│   → 선 4개를                       └──────┬──────┘         │
+│     각각 연결해야 함                      ↓                 │
+│   → 잘못 꽂으면 고장!              케이블 하나로 &quot;찰칵&quot;     │
+│                                    → 누구나 쉽게!          │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>Grove 커넥터의 장점</strong>:
+| 장점 | 설명 |
+|------|------|
+| 🔌 <strong>쉬운 연결</strong> | 케이블 하나로 "찰칵" 연결 |
+| 🛡️ <strong>안전함</strong> | 잘못 꽂아도 고장 안 남 (방향이 정해져 있음) |
+| 📦 <strong>표준화</strong> | 모든 Grove 부품이 같은 방식으로 연결 |
+| 🔄 <strong>재사용</strong> | 연결했다 뺐다 자유롭게 |</p>
+<p><strong>쉽게 말하면</strong>: Grove Shield는 <strong>복잡한 배선 없이 센서를 쉽게 연결하게 해주는 확장 보드</strong>야!</p>
+<hr />
+<h3 id="4-thonny-ide">개념 4: Thonny IDE란?<a class="headerlink" href="#4-thonny-ide" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: Thonny는 마치 <strong>코딩 전용 메모장</strong>과 같아.
+일반 메모장에서는 글을 쓰고 저장만 할 수 있지만, 
+Thonny에서는 코드를 쓰고, <strong>실행하고</strong>, 결과를 바로 확인할 수 있어!</p>
+<p><strong>정확한 정의</strong>: Thonny는 <strong>Python 전용 통합 개발 환경(IDE, Integrated Development Environment)</strong>이야.
+초보자를 위해 만들어져서 설치도 쉽고, Pico와의 연결도 간단해.</p>
+<p><strong>예시로 확인</strong>:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│  Thonny IDE 화면 구성                                       │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │  파일  편집  보기  실행  도구  도움말               │   │
+│  ├─────────────────────────────────────────────────────┤   │
+│  │  ▶ 실행  ■ 정지  │ 저장 │                          │   │
+│  ├─────────────────────────────────────────────────────┤   │
+│  │                                                     │   │
+│  │  # 여기에 코드를 작성해요                           │   │
+│  │  print(&quot;Hello, Pico!&quot;)        ← 코드 작성 영역     │   │
+│  │                                                     │   │
+│  ├─────────────────────────────────────────────────────┤   │
+│  │  Shell (쉘)                                         │   │
+│  │  ──────────────────────────────                    │   │
+│  │  &gt;&gt;&gt; Hello, Pico!              ← 결과 출력 영역    │   │
+│  │  &gt;&gt;&gt;                                                │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: Thonny는 **코드 작성 + 실행 + 결과 확인을 한 곳에서 할 수</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

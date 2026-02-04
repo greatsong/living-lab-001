@@ -1,0 +1,1499 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter11/">
+      
+      
+        <link rel="next" href="../chapter13/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>거리로 음악을 - 테레민 만들기 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#12-" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            교실 리빙랩: 측정을 넘어 문제해결까지
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              거리로 음악을 - 테레민 만들기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 입력과 출력의 기초
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter08/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 거리와 빛으로 세상 감지
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    교실 리빙랩: 측정을 넘어 문제해결까지
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 켜다 - LED 제어의 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소리를 내다 - 부저 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    버튼을 읽다 - 디지털 입력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 통합 미션 - 나만의 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 숫자로 - 조도센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리에 반응하는 신호등 - 조건문 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제로 어디에 쓰일까?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 값 매핑(Mapping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 주파수(Hz)와 음높이
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: PWM으로 소리 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 하드웨어 연결
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 초음파 센서 테스트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 통합 미션 - 스마트 접근 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실제로 어디에 쓰일까?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 값 매핑(Mapping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 주파수(Hz)와 음높이
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: PWM으로 소리 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 하드웨어 연결
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 초음파 센서 테스트
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="12-">챕터 12: 거리로 음악을 - 테레민 만들기<a class="headerlink" href="#12-" title="Permanent link">&para;</a></h1>
+<p><strong>Part 2</strong>: 거리와 빛으로 세상 감지</p>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 거리 값을 주파수(Hz)로 매핑해 부저 음높이를 제어할 수 있다</li>
+<li>[ ] 연속적인 센서 입력으로 실시간 출력 변화를 구현할 수 있다</li>
+<li>[ ] 값 매핑(mapping) 함수의 원리를 이해하고 활용할 수 있다</li>
+<li>[ ] 창의적 악기 인터페이스의 가능성을 탐구할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>🎵 테레민(Theremin)이란?
+
+1920년대 발명된 최초의 전자악기
+손을 대지 않고 허공에서 연주하는 신비로운 악기
+
+    ♪ ♫ ♪
+     \|/
+      🖐️  ← 손 위치에 따라 음이 변해요!
+
+   [테레민 안테나]
+</code></pre></div>
+<p><strong>테레민의 마법 같은 원리:</strong>
+- 손이 <strong>가까우면</strong> → 높은 음 🎵
+- 손이 <strong>멀면</strong> → 낮은 음 🎶</p>
+<p>우리는 이 원리를 <strong>초음파 센서 + 부저</strong>로 구현할 거야!</p>
+<h3 id="_3">실제로 어디에 쓰일까?<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>응용 분야</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>악기</strong></td>
+<td>거리 기반 전자악기, 모션 컨트롤러</td>
+</tr>
+<tr>
+<td><strong>접근 경보</strong></td>
+<td>자동차 후방 감지 - 가까울수록 빠른 경고음</td>
+</tr>
+<tr>
+<td><strong>인터랙티브 전시</strong></td>
+<td>관람객 움직임에 반응하는 사운드 아트</td>
+</tr>
+<tr>
+<td><strong>게임 컨트롤러</strong></td>
+<td>손 동작으로 게임 캐릭터 조작</td>
+</tr>
+</tbody>
+</table>
+<p><strong>이번 챕터의 핵심:</strong></p>
+<blockquote>
+<p>센서 값 → 다른 범위의 값으로 <strong>변환(매핑)</strong>하는 기술</p>
+</blockquote>
+<hr />
+<h2 id="_4">📚 핵심 개념<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1-mapping">개념 1: 값 매핑(Mapping)<a class="headerlink" href="#1-mapping" title="Permanent link">&para;</a></h3>
+<p><strong>1. 비유로 시작:</strong></p>
+<blockquote>
+<p>"값 매핑은 마치 <strong>환율 변환</strong>과 같아요"</p>
+</blockquote>
+<p>1000원을 달러로 바꾸면 약 0.75달러가 되듯이,
+거리 2~30cm를 주파수 200~2000Hz로 바꾸는 거야.</p>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────────┐
+│                      값 매핑 개념                             │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│   입력 범위 (거리)              출력 범위 (주파수)            │
+│   ┌─────────────────┐          ┌─────────────────┐          │
+│   │ 2cm ──────30cm  │    →     │ 2000Hz ───200Hz │          │
+│   └─────────────────┘          └─────────────────┘          │
+│                                                              │
+│   [2cm]  ──매핑──→  [2000Hz] (가까우면 높은 음)              │
+│   [16cm] ──매핑──→  [1100Hz] (중간 거리, 중간 음)            │
+│   [30cm] ──매핑──→  [200Hz]  (멀면 낮은 음)                  │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>2. 정확한 정의:</strong></p>
+<blockquote>
+<p>"값 매핑은 한 범위의 값을 다른 범위의 값으로 <strong>비례 변환</strong>하는 것입니다"</p>
+</blockquote>
+<p>수학 공식:
+<div class="highlight"><pre><span></span><code>출력값 = (입력값 - 입력최소) × (출력최대 - 출력최소) / (입력최대 - 입력최소) + 출력최소
+</code></pre></div></p>
+<p><strong>3. 예시로 확인:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 거리 10cm를 주파수로 매핑</span>
+<span class="c1"># 거리 범위: 2~30cm → 주파수 범위: 2000~200Hz (반비례)</span>
+
+<span class="n">거리</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># 계산: 2000 - (10-2) × (2000-200) / (30-2)</span>
+<span class="c1"># = 2000 - 8 × 1800 / 28</span>
+<span class="c1"># = 2000 - 514 = 1486Hz</span>
+
+<span class="c1"># 10cm 거리 → 약 1486Hz 소리!</span>
+</code></pre></div>
+<p><strong>쉽게 말하면:</strong> 센서 값을 부저가 이해하는 주파수로 번역해주는 것!</p>
+<hr />
+<h3 id="2-hz">개념 2: 주파수(Hz)와 음높이<a class="headerlink" href="#2-hz" title="Permanent link">&para;</a></h3>
+<p><strong>1. 비유로 시작:</strong></p>
+<blockquote>
+<p>"주파수는 마치 <strong>1초에 줄을 몇 번 튕기는지</strong>와 같아요"</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>낮은 음 (200Hz): 1초에 200번 진동
+───〰️〰️〰️〰️〰️───  천천히 진동 → 낮은 소리
+
+높은 음 (2000Hz): 1초에 2000번 진동
+───∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿───  빠르게 진동 → 높은 소리
+</code></pre></div>
+<p><strong>2. 정확한 정의:</strong></p>
+<blockquote>
+<p>"주파수(Hz)는 1초당 진동 횟수를 의미하며, 숫자가 클수록 높은 음이 납니다"</p>
+</blockquote>
+<p><strong>3. 음계와 주파수:</strong></p>
+<div class="highlight"><pre><span></span><code>┌────────────────────────────────────────────────┐
+│              피아노 음계와 주파수               │
+├────────────────────────────────────────────────┤
+│                                                │
+│  도(C4)  = 262Hz   🎹                          │
+│  레(D4)  = 294Hz      🎹                       │
+│  미(E4)  = 330Hz         🎹                    │
+│  파(F4)  = 349Hz            🎹                 │
+│  솔(G4)  = 392Hz               🎹              │
+│  라(A4)  = 440Hz                  🎹           │
+│  시(B4)  = 494Hz                     🎹        │
+│  도(C5)  = 523Hz                        🎹     │
+│                                                │
+│  * 440Hz(라)가 국제 표준 기준음!               │
+│                                                │
+└────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면:</strong> Hz 숫자가 높으면 높은 음, 낮으면 낮은 음!</p>
+<hr />
+<h3 id="3-pwm">개념 3: PWM으로 소리 만들기<a class="headerlink" href="#3-pwm" title="Permanent link">&para;</a></h3>
+<p><strong>1. 비유로 시작:</strong></p>
+<blockquote>
+<p>"PWM으로 소리를 내는 것은 마치 <strong>진동벨</strong>과 같아요"</p>
+</blockquote>
+<p>빠르게 껐다 켜면 높은 소리, 천천히 껐다 켜면 낮은 소리!</p>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────┐
+│              PWM으로 소리 생성                    │
+├──────────────────────────────────────────────────┤
+│                                                  │
+│  낮은 음 (200Hz)                                 │
+│  ┌───┐     ┌───┐     ┌───┐                      │
+│  │   │     │   │     │   │      천천히 ON/OFF   │
+│  ┘   └─────┘   └─────┘   └───                   │
+│                                                  │
+│  높은 음 (2000Hz)                                │
+│  ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐                   │
+│  │ │ │ │ │ │ │ │ │ │ │ │ │ │    빠르게 ON/OFF   │
+│  ┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─                   │
+│                                                  │
+│  → PWM의 주파수(freq)를 바꾸면 음높이가 변해!    │
+│                                                  │
+└──────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>2. 정확한 정의:</strong></p>
+<blockquote>
+<p>"PWM의 주파수를 변경하면 부저의 진동 속도가 바뀌어 다른 높이의 소리가 납니다"</p>
+</blockquote>
+<p><strong>3. 코드로 확인:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>  <span class="c1"># 50% 듀티 (소리 크기)</span>
+
+<span class="c1"># 주파수 변경 = 음높이 변경</span>
+<span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">262</span><span class="p">)</span>   <span class="c1"># 도</span>
+<span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">440</span><span class="p">)</span>   <span class="c1"># 라</span>
+<span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># 높은 음</span>
+</code></pre></div>
+<p><strong>쉽게 말하면:</strong> <code>buzzer.freq(숫자)</code> → 숫자를 바꾸면 음높이가 바뀐다!</p>
+<hr />
+<h2 id="_5">🔨 따라하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 하드웨어 연결<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 초음파 센서와 부저를 Pico에 연결한다</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                     회로 연결도                              │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   ┌─────────────┐                                           │
+│   │ 초음파센서   │                                           │
+│   │  (HC-SR04)  │                                           │
+│   │ ┌─────────┐ │                                           │
+│   │ │ ● ● ● ● │ │                                           │
+│   │ └─────────┘ │                                           │
+│   │ V T E G    │                                           │
+│   └─│─│─│─│────┘                                           │
+│     │ │ │ │                                                 │
+│     │ │ │ └── GND ────────┐                                │
+│     │ │ └──── GP5 (Echo) ─┤                                │
+│     │ └────── GP4 (Trig) ─┤                                │
+│     └──────── 5V ─────────┤                                │
+│                           │                                 │
+│   ┌─────────────┐         │      ┌──────────────────┐      │
+│   │    부저     │         │      │                  │      │
+│   │   ┌───┐    │         │      │   Raspberry Pi   │      │
+│   │   │ ♪ │    │         │      │      Pico        │      │
+│   │   └───┘    │         │      │                  │      │
+│   │  SIG GND   │         │      │  GP4  ●──────────│      │
+│   └───│───│────┘         │      │  GP5  ●──────────│      │
+│       │   │              │      │  GP16 ●──────────│      │
+│       │   └── GND ───────┤      │  5V   ●──────────│      │
+│       └────── GP16 ──────┤      │  GND  ●──────────│      │
+│                          │      │                  │      │
+│                          └──────│──────────────────│      │
+│                                 └──────────────────┘      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>Grove 쉴드 사용 시:</strong></p>
+<table>
+<thead>
+<tr>
+<th>부품</th>
+<th>연결 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>초음파 센서</td>
+<td>D4 포트 (Trig=GP4, Echo=GP5)</td>
+</tr>
+<tr>
+<td>부저</td>
+<td>D16 포트</td>
+</tr>
+</tbody>
+</table>
+<p><strong>여기서 잠깐! 🤔</strong></p>
+<blockquote>
+<p>초음파 센서는 5V가 필요해! Grove 쉴드의 D4 포트는 5V를 공급해주니까 걱정 마.</p>
+</blockquote>
+<hr />
+<h3 id="step-2">Step 2: 초음파 센서 테스트<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 거리 측정이 제대로 되는지 확인한다</p>
+<p>```python</p>
+<h1 id="what">=== WHAT: 초음파 거리 측정 테스트 ===<a class="headerlink" href="#what" title="Permanent link">&para;</a></h1>
+<h1 id="_6">손을 가까이/멀리 하면서 거리 값 확인<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<h1 id="-why-">--- WHY: 테레민 만들기 전에 센서가 잘 작동하는지 확인 ---<a class="headerlink" href="#-why-" title="Permanent link">&para;</a></h1>
+<p>from machine import Pin
+import time</p>
+<h1 id="_7">초음파 센서 핀 설정<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<p>trig = Pin(4, Pin.OUT)  # 초음파 발사 핀
+echo = Pin(5, Pin.IN)   # 초음파 수신 핀</p>
+<p>def measure_distance():
+    """거리 측정 함수 (cm 단위 반환)"""
+    # 초음파 발사 (10us 펄스)
+    trig.low()
+    time.sleep_us(2)
+    trig.high()
+    time.sleep_us(10)
+    trig.low()</p>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span> 에코 대기 (타임아웃 30ms)
+timeout = time.ticks_us() + 30000
+while echo.value() == 0:
+    if time.ticks_us() &gt; timeout:
+        return -1  # 타임아웃
+    start = time.ticks_us()
+
+timeout = time.ticks_us() + 30000
+while echo.value() == 1:
+    if time.ticks_us() &gt; timeout:
+        return -1  # 타임아웃
+    end = time.ticks_us()
+
+<span class="gh">#</span> 거리 계산 (소리 속도: 343m/s)
+duration = end - start
+distance = duration * 0.0343 / 2  # cm
+
+return distance
+</code></pre></div>
+
+<h1 id="_8">테스트 루프<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<p>print("🔊 초음파 센서 테스트 시작!")
+print("손을</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

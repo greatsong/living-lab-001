@@ -1,0 +1,1410 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter08/">
+      
+      
+        <link rel="next" href="../chapter10/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>빛에 반응하는 LED - 자동 밝기 조명 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-09-led-" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            교실 리빙랩: 측정을 넘어 문제해결까지
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              빛에 반응하는 LED - 자동 밝기 조명
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 입력과 출력의 기초
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter08/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 거리와 빛으로 세상 감지
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    교실 리빙랩: 측정을 넘어 문제해결까지
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 켜다 - LED 제어의 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소리를 내다 - 부저 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    버튼을 읽다 - 디지털 입력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 통합 미션 - 나만의 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 숫자로 - 조도센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-light-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 조도센서 (Light Sensor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-value-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 값 매핑 (Value Mapping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 임계값 (Threshold)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 조도센서 값 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: map 함수로 값 변환하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리에 반응하는 신호등 - 조건문 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 통합 미션 - 스마트 접근 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-light-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 조도센서 (Light Sensor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-value-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 값 매핑 (Value Mapping)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 임계값 (Threshold)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 조도센서 값 읽기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: map 함수로 값 변환하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-09-led-">Chapter 09: 빛에 반응하는 LED - 자동 밝기 조명<a class="headerlink" href="#chapter-09-led-" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Part 2: 거리와 빛으로 세상 감지</p>
+</blockquote>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 조도센서 값을 읽고 의미를 이해할 수 있다</li>
+<li>[ ] map 함수를 사용해 센서 값을 LED 밝기로 변환할 수 있다</li>
+<li>[ ] 어두우면 밝아지고, 밝으면 어두워지는 자동 조명을 만들 수 있다</li>
+<li>[ ] 임계값(threshold)을 설정해 ON/OFF 제어를 구현할 수 있다</li>
+<li>[ ] 바이브 코딩으로 나만의 무드등을 만들 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>어두워지면 자동으로 켜지는 가로등, 본 적 있지? 🌙</p>
+<p>낮에는 꺼져 있다가 해가 지면 스르륵 켜지는 그 조명. 누군가 일일이 스위치를 누르는 게 아니야. <strong>빛의 밝기를 감지하는 센서</strong>가 "지금 어두워졌네?"를 판단하고, 자동으로 LED를 켜는 거지.</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    자동 조명의 원리                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│    ☀️ 낮 (밝음)              🌙 밤 (어두움)                 │
+│                                                             │
+│   조도센서: 높은 값         조도센서: 낮은 값               │
+│        ↓                         ↓                         │
+│   LED: 꺼짐 (절전)          LED: 켜짐 (밝게!)              │
+│                                                             │
+│   &quot;밝으니까 조명 필요 없어&quot;  &quot;어두우니까 켜줘야지&quot;          │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>이번 장에서 배우는 건 <strong>"센서 값 → 출력 값 변환"</strong>이야. 이게 왜 중요하냐면, 세상의 모든 자동화 시스템이 이 원리로 작동하거든!</p>
+<ul>
+<li>에어컨: 온도 감지 → 냉방 강도 조절</li>
+<li>자동차: 주변 밝기 감지 → 헤드라이트 자동 ON</li>
+<li>스마트폰: 주변 밝기 감지 → 화면 밝기 자동 조절</li>
+</ul>
+<p><strong>한 번 익히면, 무한한 프로젝트에 적용할 수 있어!</strong></p>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-light-sensor">개념 1: 조도센서 (Light Sensor)<a class="headerlink" href="#1-light-sensor" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>비유로 시작</strong>: "조도센서는 마치 눈과 같아요. 밝으면 '밝다!'고 느끼고, 어두우면 '어둡다!'고 느끼는 거죠."</p>
+</li>
+<li>
+<p><strong>정확한 정의</strong>: 조도센서는 빛의 양(밝기)을 전기 신호로 변환하는 센서야. 빛이 많이 들어오면 높은 값, 적게 들어오면 낮은 값을 출력해.</p>
+</li>
+<li>
+<p><strong>예시로 확인</strong>:</p>
+</li>
+<li>환한 형광등 아래: 50,000 이상</li>
+<li>일반 실내: 20,000~40,000</li>
+<li>손으로 완전히 가리면: 100 이하</li>
+</ol>
+<p><strong>쉽게 말하면</strong>: 빛을 숫자로 바꿔주는 장치야!</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                조도센서의 값 범위                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  0 ◀──────────────────────────────────────────────▶ 65535  │
+│  │                                                      │   │
+│  완전 어둠                                          완전 밝음│
+│  (칠흑 같은 밤)                              (직사광선)     │
+│                                                             │
+│     💀          🌙          💡          ☀️         🔆      │
+│     0~100    1000~5000  10000~30000  40000~    60000+      │
+│    손으로     저녁 실내    일반 실내   밝은 창가  직사광선   │
+│    완전 가림                                                │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h3 id="2-value-mapping">개념 2: 값 매핑 (Value Mapping)<a class="headerlink" href="#2-value-mapping" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>비유로 시작</strong>: "매핑은 마치 단위 변환과 같아요. 100cm를 1m로 바꾸듯이, 센서의 범위를 LED의 범위로 바꾸는 거예요."</p>
+</li>
+<li>
+<p><strong>정확한 정의</strong>: 매핑(mapping)은 한 범위의 값을 다른 범위의 값으로 비례 변환하는 것이야. 조도센서 값(0~65535)을 LED PWM 값(0~65535)으로 변환할 때 사용해.</p>
+</li>
+<li>
+<p><strong>예시로 확인</strong>:
+   <div class="highlight"><pre><span></span><code>조도센서 값 0      →  LED 밝기 65535 (최대)
+조도센서 값 32767  →  LED 밝기 32768 (중간)
+조도센서 값 65535  →  LED 밝기 0     (꺼짐)
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>쉽게 말하면</strong>: 센서 값을 LED가 이해하는 값으로 번역하는 거야!</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    매핑의 원리                               │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   [입력 범위]                      [출력 범위]              │
+│                                                             │
+│   조도센서                         LED PWM                  │
+│   0 ─────────────── 65535          0 ─────────────── 65535 │
+│   │                    │           │                    │   │
+│   어둠              밝음          꺼짐              최대밝기│
+│                                                             │
+│        ╲                             ╱                      │
+│          ╲         map()           ╱                        │
+│            ╲                     ╱                          │
+│              ╲     (변환)      ╱                            │
+│                ╲             ╱                              │
+│                  ───────────                                │
+│                                                             │
+│   * 핵심: 어두우면(입력 작음) → LED 밝게(출력 큼)           │
+│          밝으면(입력 큼) → LED 어둡게(출력 작음)            │
+│          → &quot;반비례&quot; 관계!                                   │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h3 id="3-threshold">개념 3: 임계값 (Threshold)<a class="headerlink" href="#3-threshold" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>비유로 시작</strong>: "임계값은 마치 합격선과 같아요. 60점 이상이면 합격, 미만이면 불합격처럼, 특정 값을 기준으로 동작이 달라지는 거예요."</p>
+</li>
+<li>
+<p><strong>정확한 정의</strong>: 임계값(threshold)은 어떤 동작을 실행할지 결정하는 기준점이야. 센서 값이 이 기준을 넘으면 ON, 넘지 않으면 OFF 같은 식으로 제어해.</p>
+</li>
+<li>
+<p><strong>예시로 확인</strong>:
+   <div class="highlight"><pre><span></span><code>임계값 = 20000 (30% 정도 밝기)
+
+조도 값 15000 → 임계값보다 작음 → &quot;어둡다!&quot; → LED ON
+조도 값 25000 → 임계값보다 큼  → &quot;밝다!&quot;   → LED OFF
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>쉽게 말하면</strong>: "이 값보다 작으면 켜고, 크면 꺼!" 하는 기준선이야!</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    임계값의 동작                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   조도값 ──────────────────────────────────────────────     │
+│          │                                             │    │
+│      65535│  밝음 ☀️                                   │    │
+│          │                                             │    │
+│          │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─          │    │
+│      20000│        ↑ 임계값 (threshold)                │    │
+│          │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─          │    │
+│          │  어둠 🌙                                    │    │
+│          0│                                            │    │
+│          └─────────────────────────────────────────────     │
+│                                                             │
+│     임계값 위 (밝음) → LED OFF  💡❌                        │
+│     임계값 아래 (어둠) → LED ON  💡✅                       │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 조도센서 값 읽기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 조도센서를 연결하고 현재 밝기를 숫자로 확인하기</p>
+<p><strong>회로 연결</strong>:
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    조도센서 연결                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   Pico                        Grove 조도센서                │
+│   ┌─────────┐                 ┌─────────────┐              │
+│   │         │                 │    ┌───┐    │              │
+│   │      A0 ├─────────────────┤    │ 👁 │    │              │
+│   │         │   Grove 케이블   │    └───┘    │              │
+│   │         │  (노랑-빨강-    │   Light     │              │
+│   │         │   검정-흰색)    │   Sensor    │              │
+│   │         │                 │             │              │
+│   └─────────┘                 └─────────────┘              │
+│                                                             │
+│   * Grove Shield 사용 시: A0 포트에 바로 연결!              │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div></p>
+<p><strong>코드</strong>:
+<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 조도센서 값 읽기 ===</span>
+<span class="c1"># 현재 밝기를 숫자로 확인하는 기본 코드</span>
+
+<span class="c1"># --- WHY: 먼저 센서가 어떤 값을 주는지 알아야 활용할 수 있어 ---</span>
+
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>  <span class="c1"># HOW: ADC는 아날로그 값을 읽는 기능</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># 조도센서 설정 (A0 = GPIO26)</span>
+<span class="n">light_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>  <span class="c1"># HOW: GPIO 26번 핀을 아날로그 입력으로 설정</span>
+
+<span class="c1"># 무한 반복</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># 조도값 읽기 (0~65535)</span>
+    <span class="n">light_value</span> <span class="o">=</span> <span class="n">light_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>  <span class="c1"># HOW: u16 = 16비트 부호 없는 정수 (0~65535)</span>
+
+    <span class="c1"># 화면에 출력</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;조도값: </span><span class="si">{</span><span class="n">light_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># HOW: f-string으로 값 출력</span>
+
+    <span class="c1"># 0.5초 대기</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># HOW: 너무 빠르면 읽기 어려우니까</span>
+</code></pre></div></p>
+<p><strong>실행 결과</strong>:
+<div class="highlight"><pre><span></span><code>조도값: 42156
+조도값: 41893
+조도값: 15234    ← 손으로 살짝 가림
+조도값: 3521     ← 손으로 완전히 가림
+조도값: 45678    ← 손 뗌
+</code></pre></div></p>
+<p><strong>여기서 잠깐! 🤔</strong></p>
+<blockquote>
+<p>📌 <strong>알아보기: ADC란?</strong></p>
+<p>ADC = Analog to Digital Converter (아날로그-디지털 변환기)
+- 조도센서는 빛의 양에 따라 <strong>연속적인 전압</strong>을 출력해
+- 컴퓨터는 0과 1만 이해하니까, 이 전압을 <strong>숫자</strong>로 바꿔야 해
+- Pico의 ADC는 전압을 0~65535 범위의 숫자로 변환해줘</p>
+</blockquote>
+<p><strong>직접 실험해보기</strong>:
+1. 손으로 센서를 완전히 가려봐 → 값이 얼마?
+2. 스마트폰 손전등을 비춰봐 → 값이 얼마?
+3. 일반 상태 → 값이 얼마?</p>
+<p>이 값들을 기억해둬! 나중에 임계값 설정할 때 참고해야 해.</p>
+<hr />
+<h3 id="step-2-map">Step 2: map 함수로 값 변환하기<a class="headerlink" href="#step-2-map" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 조도값을 LED 밝기로 변환하는 map 함수 이해하기</p>
+<p><strong>코드</strong>:
+```python</p>
+<h1 id="what-map">=== WHAT: map 함수 만들기 ===<a class="headerlink" href="#what-map" title="Permanent link">&para;</a></h1>
+<h1 id="_5">한 범위의 값을 다른 범위로 변환하는<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

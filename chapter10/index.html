@@ -1,0 +1,1710 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="../chapter09/">
+      
+      
+        <link rel="next" href="../chapter11/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>거리를 재다 - 초음파 센서 기초 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            교실 리빙랩: 측정을 넘어 문제해결까지
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              거리를 재다 - 초음파 센서 기초
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter01/" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 입력과 출력의 기초
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../chapter08/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 거리와 빛으로 세상 감지
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    교실 리빙랩: 측정을 넘어 문제해결까지
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 켜다 - LED 제어의 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소리를 내다 - 부저 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    버튼을 읽다 - 디지털 입력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 통합 미션 - 나만의 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 숫자로 - 조도센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실생활에서 초음파가 쓰이는 곳
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 초음파란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 거리 = 속도 × 시간
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-hc-sr04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: HC-SR04 초음파 센서 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        작동 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 측정 범위와 한계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오차가 생기는 이유
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        준비물
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 하드웨어 연결
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: 하드웨어 연결">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grove 초음파 센서 연결 (쉬움!)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hc-sr04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HC-SR04 직접 연결 (일반 초음파 센서)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 기본 거리 측정 코드
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리에 반응하는 신호등 - 조건문 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 통합 미션 - 스마트 접근 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 왜 이걸 배우나요?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실생활에서 초음파가 쓰이는 곳
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 초음파란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 거리 = 속도 × 시간
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-hc-sr04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: HC-SR04 초음파 센서 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        작동 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 측정 범위와 한계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오차가 생기는 이유
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        준비물
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 하드웨어 연결
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: 하드웨어 연결">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grove 초음파 센서 연결 (쉬움!)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hc-sr04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HC-SR04 직접 연결 (일반 초음파 센서)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 기본 거리 측정 코드
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="-">거리를 재다 - 초음파 센서 기초<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Part 2</strong>: 거리와 빛으로 세상 감지</p>
+</blockquote>
+<hr />
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 초음파 센서의 작동 원리(음파 반사와 시간 측정)를 설명할 수 있다</li>
+<li>[ ] 초음파 센서를 올바르게 연결할 수 있다</li>
+<li>[ ] 거리를 측정하고 cm 단위로 시리얼 모니터에 출력할 수 있다</li>
+<li>[ ] 측정 가능 범위(2cm~400cm)와 오차 요인을 이해할 수 있다</li>
+<li>[ ] 거리에 따라 LED 색상이 바뀌는 "신호등" 시스템을 만들 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>박쥐를 본 적 있어? 어둠 속에서도 부딪히지 않고 날아다니지. 어떻게 그게 가능할까?</p>
+<p>박쥐는 <strong>초음파</strong>를 쏘고, 물체에 부딪혀 돌아오는 시간을 측정해서 거리를 알아내. 이걸 <strong>반향정위(echolocation)</strong>라고 해.</p>
+<div class="highlight"><pre><span></span><code>🦇 박쥐의 초음파 원리
+
+     삐익! →→→
+    ┌───┐         ┌─────┐
+    │🦇│─────────→│ 벽  │
+    └───┘←─────── └─────┘
+          ←←← 삐익!
+
+   &quot;0.01초 만에 돌아왔네? 
+    그럼 벽까지 약 1.7m구나!&quot;
+</code></pre></div>
+<p><strong>초음파 센서</strong>는 이 원리를 그대로 따라한 거야!</p>
+<h3 id="_3">실생활에서 초음파가 쓰이는 곳<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>분야</th>
+<th>활용 예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🚗 자동차</td>
+<td>후방 감지 센서 ("삐삐삐" 소리 들어봤지?)</td>
+</tr>
+<tr>
+<td>🏥 병원</td>
+<td>초음파 검사 (뱃속 아기 사진!)</td>
+</tr>
+<tr>
+<td>🤖 로봇</td>
+<td>장애물 회피 로봇청소기</td>
+</tr>
+<tr>
+<td>📏 측정</td>
+<td>레이저 없이 방 크기 측정</td>
+</tr>
+<tr>
+<td>🚰 산업</td>
+<td>물탱크 수위 측정</td>
+</tr>
+</tbody>
+</table>
+<p>이번 챕터에서 배우면, 나중에 이런 걸 만들 수 있어:
+- 손이 가까이 오면 인사하는 로봇 🤖
+- 화장실 사용 중 표시 시스템 🚽
+- 쓰레기통이 가득 차면 알려주는 장치 🗑️</p>
+<hr />
+<h2 id="_4">📚 핵심 개념<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1">개념 1: 초음파란?<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: "초음파는 우리 귀에 안 들리는 아주 높은 소리야. 마치 개만 들을 수 있는 '개 호루라기' 같은 거지."</p>
+<p><strong>정확한 정의</strong>: 초음파(ultrasonic)는 사람이 들을 수 있는 소리(20Hz~20,000Hz)보다 높은 주파수(20,000Hz 이상)를 가진 음파야. 우리가 사용할 센서는 약 40,000Hz(40kHz)의 초음파를 발생시켜.</p>
+<p><strong>예시로 확인</strong>: 
+- 사람이 들을 수 있는 소리: 대화 소리, 음악 (약 100~8,000Hz)
+- 개가 들을 수 있는 소리: 최대 45,000Hz
+- 초음파 센서: 40,000Hz (사람도 개도 못 들어!)</p>
+<p><strong>쉽게 말하면</strong>: 초음파는 "조용한 소리"야. 쏘고 있어도 우리 귀엔 아무 소리도 안 들려!</p>
+<hr />
+<h3 id="2">개념 2: 거리 = 속도 × 시간<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong>: "친구에게 '야호!'하고 소리치면 메아리가 돌아오잖아. 멀리 있는 산일수록 메아리가 늦게 돌아오지?"</p>
+<p><strong>정확한 정의</strong>: 
+<div class="highlight"><pre><span></span><code>거리 = (소리의 속도 × 왕복 시간) ÷ 2
+</code></pre></div></p>
+<p>소리는 공기 중에서 초속 약 <strong>343m</strong>(340m/s로 계산해도 OK)로 이동해. 
+초음파를 쏘고 돌아오는 시간을 측정하면 거리를 계산할 수 있어.</p>
+<p><strong>예시로 확인</strong>:
+<div class="highlight"><pre><span></span><code>예: 초음파가 돌아오는데 0.001초(1ms) 걸렸다면?
+
+  거리 = (343m/s × 0.001s) ÷ 2
+       = 0.343m ÷ 2
+       = 0.1715m
+       = 약 17cm
+</code></pre></div></p>
+<p><strong>왜 2로 나눌까?</strong> 🤔
+<div class="highlight"><pre><span></span><code>     발사! →→→
+    ┌────┐         ┌─────┐
+    │센서│─────────→│물체 │  ← 가는 거리
+    └────┘←─────── └─────┘
+          ←←← 도착!          ← 오는 거리
+
+   측정한 시간 = 가는 시간 + 오는 시간 (왕복!)
+   실제 거리 = 왕복 거리 ÷ 2
+</code></pre></div></p>
+<p><strong>쉽게 말하면</strong>: 소리가 갔다 오는 시간을 재서, 속도로 나누면 거리가 나와!</p>
+<hr />
+<h3 id="3-hc-sr04">개념 3: HC-SR04 초음파 센서 구조<a class="headerlink" href="#3-hc-sr04" title="Permanent link">&para;</a></h3>
+<p>우리가 사용할 센서는 <strong>HC-SR04</strong> (또는 Grove 초음파 센서)야.</p>
+<div class="highlight"><pre><span></span><code>    ┌─────────────────────────────┐
+    │  ┌─────┐       ┌─────┐     │
+    │  │  T  │       │  R  │     │  T = Transmitter (송신부)
+    │  │ 🔊  │       │ 🎤  │     │  R = Receiver (수신부)
+    │  └─────┘       └─────┘     │
+    │                             │
+    │   VCC  Trig  Echo  GND     │
+    │    │    │     │    │       │
+    └────┼────┼─────┼────┼───────┘
+         │    │     │    │
+        5V  신호   신호  접지
+           보내기  받기
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>핀 이름</th>
+<th>역할</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VCC</strong></td>
+<td>전원 (+)</td>
+<td>5V 전원 공급</td>
+</tr>
+<tr>
+<td><strong>GND</strong></td>
+<td>전원 (-)</td>
+<td>접지 (Ground)</td>
+</tr>
+<tr>
+<td><strong>Trig</strong></td>
+<td>트리거</td>
+<td>"발사!" 신호를 보내는 핀</td>
+</tr>
+<tr>
+<td><strong>Echo</strong></td>
+<td>에코</td>
+<td>"돌아왔어!" 신호를 받는 핀</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">작동 순서<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────┐
+│  초음파 센서 작동 과정                                    │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│  1️⃣ Trig 핀에 10μs(마이크로초) 동안 HIGH 신호 보내기     │
+│     → &quot;준비, 발사!&quot;                                       │
+│                                                          │
+│  2️⃣ 센서가 8번의 40kHz 초음파 펄스 발사                  │
+│     → 삐삐삐삐삐삐삐삐 (우리 귀엔 안 들림)                │
+│                                                          │
+│  3️⃣ Echo 핀이 HIGH로 변함 (타이머 시작)                  │
+│     → &quot;초음파 출발했어!&quot;                                  │
+│                                                          │
+│  4️⃣ 초음파가 물체에 반사되어 돌아옴                      │
+│                                                          │
+│  5️⃣ Echo 핀이 LOW로 변함 (타이머 종료)                   │
+│     → &quot;초음파 도착했어!&quot;                                  │
+│                                                          │
+│  6️⃣ HIGH였던 시간 = 왕복 시간 → 거리 계산               │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>쉽게 말하면</strong>: Trig로 "쏴!"하고, Echo로 "돌아왔어!"를 감지해. 그 사이 시간을 재면 끝!</p>
+<hr />
+<h3 id="4">개념 4: 측정 범위와 한계<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>최소 거리</strong></td>
+<td>2cm</td>
+<td>이보다 가까우면 정확하지 않음</td>
+</tr>
+<tr>
+<td><strong>최대 거리</strong></td>
+<td>400cm (4m)</td>
+<td>이보다 멀면 감지 안 됨</td>
+</tr>
+<tr>
+<td><strong>측정 각도</strong></td>
+<td>약 15°</td>
+<td>센서 정면 기준 좌우 15도 범위</td>
+</tr>
+<tr>
+<td><strong>정밀도</strong></td>
+<td>±3mm</td>
+<td>아주 정밀하진 않지만 충분!</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>        측정 가능 범위 (위에서 본 모습)
+
+              15°↗
+               /
+              /
+    [센서]───────────────────→ 최대 4m
+              \
+               \
+              15°↘
+
+    ※ 원뿔 모양으로 초음파가 퍼져나감
+</code></pre></div>
+<h3 id="_6">오차가 생기는 이유<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>문제</th>
+<th>해결책</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🧸 푹신한 물체</td>
+<td>소리가 흡수됨</td>
+<td>단단한 물체로 테스트</td>
+</tr>
+<tr>
+<td>📐 비스듬한 물체</td>
+<td>소리가 다른 방향으로 반사</td>
+<td>센서와 수직으로 배치</td>
+</tr>
+<tr>
+<td>🌡️ 온도 변화</td>
+<td>소리 속도가 달라짐</td>
+<td>실내에서 사용</td>
+</tr>
+<tr>
+<td>🔊 다른 초음파</td>
+<td>간섭 발생</td>
+<td>센서 간 거리 유지</td>
+</tr>
+<tr>
+<td>📏 너무 가까움</td>
+<td>2cm 미만은 부정확</td>
+<td>최소 2cm 유지</td>
+</tr>
+</tbody>
+</table>
+<p><strong>쉽게 말하면</strong>: 딱딱하고, 센서를 똑바로 바라보는 물체가 가장 잘 측정돼!</p>
+<hr />
+<h2 id="_7">🔨 따라하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">준비물<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>부품</th>
+<th>수량</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi Pico</td>
+<td>1</td>
+<td>메인 보드</td>
+</tr>
+<tr>
+<td>Grove Shield</td>
+<td>1</td>
+<td>쉬운 연결을 위한 확장 보드</td>
+</tr>
+<tr>
+<td>Grove 초음파 센서</td>
+<td>1</td>
+<td>또는 HC-SR04</td>
+</tr>
+<tr>
+<td>Grove 케이블</td>
+<td>1</td>
+<td>4핀 케이블</td>
+</tr>
+<tr>
+<td>USB 케이블</td>
+<td>1</td>
+<td>PC 연결용</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="step-1">Step 1: 하드웨어 연결<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 초음파 센서를 Pico에 연결하기</p>
+<h4 id="grove">Grove 초음파 센서 연결 (쉬움!)<a class="headerlink" href="#grove" title="Permanent link">&para;</a></h4>
+<p>Grove 쉴드를 사용하면 정말 간단해:</p>
+<div class="highlight"><pre><span></span><code>    ┌─────────────────────────────────────┐
+    │         Grove Shield for Pico       │
+    │                                     │
+    │   D16 ●────┐                        │
+    │            │  Grove 케이블          │
+    │            └────────[초음파 센서]   │
+    │                                     │
+    │   D20 ●  D18 ●  I2C ●  ...         │
+    └─────────────────────────────────────┘
+</code></pre></div>
+<p><strong>연결 방법</strong>:
+1. Grove 쉴드를 Pico에 꽂는다
+2. 초음파 센서를 Grove 케이블로 <strong>D16</strong> 포트에 연결한다</p>
+<blockquote>
+<p>💡 <strong>Grove 초음파 센서</strong>는 Trig와 Echo가 하나의 핀(SIG)으로 통합되어 있어서 더 간단해!</p>
+</blockquote>
+<h4 id="hc-sr04">HC-SR04 직접 연결 (일반 초음파 센서)<a class="headerlink" href="#hc-sr04" title="Permanent link">&para;</a></h4>
+<p>Grove가 아닌 일반 HC-SR04를 사용한다면:</p>
+<div class="highlight"><pre><span></span><code>    HC-SR04          Pico
+    ─────────        ────────
+    VCC     ────────  5V (VBUS)
+    GND     ────────  GND
+    Trig    ────────  GP16
+    Echo    ────────  GP17
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>         [HC-SR04 센서]
+
+    VCC ─────── 5V (VBUS, 40번 핀)
+
+    Trig ────── GP16 (21번 핀)
+
+    Echo ────── GP17 (22번 핀)
+
+    GND ─────── GND (38번 핀)
+</code></pre></div>
+<blockquote>
+<p>⚠️ <strong>주의</strong>: HC-SR04는 5V가 필요해! 3.3V로 연결하면 제대로 작동 안 해.</p>
+</blockquote>
+<hr />
+<h3 id="step-2">Step 2: 기본 거리 측정 코드<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 초음파 센서로 거리를 측정하고 출력하기</p>
+<p><strong>코드</strong> (Grove 초음파 센서용):</p>
+<p>```python</p>
+<h1 id="grove_1">=== 초음파 센서로 거리 측정하기 (Grove 버전) ===<a class="headerlink" href="#grove_1" title="Permanent link">&para;</a></h1>
+<h1 id="cm">물체까지의 거리를 cm 단위로 측정합니다<a class="headerlink" href="#cm" title="Permanent link">&para;</a></h1>
+<p>from machine import Pin
+import time</p>
+<h1 id="-_1">--- 설정 ---<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
+<h1 id="grove_2">Grove<a class="headerlink" href="#grove_2" title="Permanent link">&para;</a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

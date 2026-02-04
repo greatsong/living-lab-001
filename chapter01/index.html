@@ -1,0 +1,1545 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
+      
+      
+        <meta name="author" content="Created with Data-AI-Book Generator">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../chapter02/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>리빙랩이란? - 측정을 넘어 문제해결로 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-01-" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            교실 리빙랩: 측정을 넘어 문제해결까지
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              리빙랩이란? - 측정을 넘어 문제해결로
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Part 1 - 입력과 출력의 기초
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../chapter08/" class="md-tabs__link">
+          
+  
+  
+  Part 2 - 거리와 빛으로 세상 감지
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    교실 리빙랩: 측정을 넘어 문제해결까지
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1 - 입력과 출력의 기초
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리빙랩이란? - 측정을 넘어 문제해결로
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-living-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 리빙랩(Living Lab)이란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 피지컬 컴퓨팅의 기본 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sensor-actuator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 센서(Sensor)와 액추에이터(Actuator)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 3: 센서(Sensor)와 액추에이터(Actuator)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sensor-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        센서(Sensor) - 입력 장치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actuator-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        액추에이터(Actuator) - 출력 장치
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: "측정 프로젝트" vs "리빙랩 프로젝트"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기: 리빙랩 사례 탐구
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기: 리빙랩 사례 탐구">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 실제 리빙랩 사례 살펴보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: 실제 리빙랩 사례 살펴보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사례 1: 화장실 사용중 표시 시스템 🚻
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico와 첫 만남 - 개발환경 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 켜다 - LED 제어의 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    밝기를 조절하다 - PWM의 마법
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    소리를 내다 - 부저 제어
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    버튼을 읽다 - 디지털 입력
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1주차 통합 미션 - 나만의 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2 - 거리와 빛으로 세상 감지
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛을 숫자로 - 조도센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    빛에 반응하는 LED - 자동 밝기 조명
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리를 재다 - 초음파 센서 기초
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리에 반응하는 신호등 - 조건문 활용
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    거리로 음악을 - 테레민 만들기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    센서 조합의 힘 - 복합 감지 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2주차 통합 미션 - 스마트 접근 알림 시스템
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 이 장에서 배우는 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 왜 이걸 배우나요?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 핵심 개념
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 핵심 개념">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-living-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: 리빙랩(Living Lab)이란?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 피지컬 컴퓨팅의 기본 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sensor-actuator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 센서(Sensor)와 액추에이터(Actuator)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 3: 센서(Sensor)와 액추에이터(Actuator)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sensor-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        센서(Sensor) - 입력 장치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actuator-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        액추에이터(Actuator) - 출력 장치
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: "측정 프로젝트" vs "리빙랩 프로젝트"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔨 따라하기: 리빙랩 사례 탐구
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔨 따라하기: 리빙랩 사례 탐구">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 실제 리빙랩 사례 살펴보기
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: 실제 리빙랩 사례 살펴보기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사례 1: 화장실 사용중 표시 시스템 🚻
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-01-">Chapter 01: 리빙랩이란? - 측정을 넘어 문제해결로<a class="headerlink" href="#chapter-01-" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 리빙랩의 개념과 기존 측정 프로젝트와의 차이점을 설명할 수 있다</li>
+<li>[ ] 센서(입력)와 액추에이터(출력)의 역할을 구분할 수 있다</li>
+<li>[ ] 피지컬 컴퓨팅의 "입력 → 처리 → 출력" 구조를 이해할 수 있다</li>
+<li>[ ] 6주 프로젝트의 최종 목표와 학습 흐름을 파악할 수 있다</li>
+<li>[ ] 내가 해결하고 싶은 학교 문제를 떠올릴 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>"온도가 26도입니다"</strong> vs <strong>"온도가 26도라서 선풍기가 자동으로 켜집니다"</strong></p>
+</blockquote>
+<p>어떤 게 더 유용할까?</p>
+<p>지금까지 많은 프로젝트에서 센서로 데이터를 <strong>측정</strong>하고, 그래프로 <strong>보여주고</strong>, "환기가 필요합니다"라고 <strong>말로 제안</strong>하는 것까지 했을 거야. 하지만 실제로 창문이 열리거나 선풍기가 돌아가진 않았지.</p>
+<p><strong>리빙랩</strong>은 다르다. 측정에서 멈추지 않고, <strong>실제로 작동하는 해결책</strong>을 만들어서 학교에 <strong>설치</strong>한다. </p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│   기존 프로젝트          리빙랩 프로젝트                     │
+│                                                             │
+│   온도 측정              온도 측정                          │
+│      ↓                      ↓                              │
+│   그래프 표시            26도 넘으면                        │
+│      ↓                      ↓                              │
+│   &quot;환기하세요&quot;           선풍기 자동 ON! 🌀                 │
+│   (말로 제안)            (실제로 작동)                      │
+│                                                             │
+│   끝 :(                  학교에 설치! 🎉                    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>이번 6주 동안 너는 <strong>진짜 학교를 바꾸는 것</strong>을 만들게 된다!</p>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-living-lab">개념 1: 리빙랩(Living Lab)이란?<a class="headerlink" href="#1-living-lab" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>비유로 시작</strong>: 리빙랩은 마치 <strong>"내 방을 실험실로 만드는 것"</strong>과 같아. 연구실에서 실험하고 끝내는 게 아니라, 실제로 사람들이 생활하는 공간에서 문제를 발견하고 해결책을 만들어 적용하는 거야.</p>
+</li>
+<li>
+<p><strong>정확한 정의</strong>: Living(살아있는) + Lab(실험실) = <strong>"생활 속 실험실"</strong>. 실제 사용자가 있는 현장에서 문제를 발견하고, 해결책을 만들고, 직접 테스트하고, 개선하는 과정 전체를 말해.</p>
+</li>
+<li>
+<p><strong>예시로 확인</strong>: </p>
+</li>
+<li>학교 복도가 너무 어두워? → 조도센서 + LED 자동 조명 설치</li>
+<li>화장실 사용 중인지 모르겠어? → 거리센서 + 사용중 표시 LED 설치</li>
+<li>교실이 너무 더워? → 온도센서 + 자동 선풍기 설치</li>
+</ol>
+<p><strong>쉽게 말하면</strong>: 학교에서 불편한 점을 찾아서, <strong>실제로 작동하는 해결책</strong>을 만들어 <strong>설치</strong>하는 프로젝트야!</p>
+<hr />
+<h3 id="2">개념 2: 피지컬 컴퓨팅의 기본 구조<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>비유로 시작</strong>: 피지컬 컴퓨팅은 마치 <strong>"사람의 신경 시스템"</strong>과 같아.</li>
+<li>눈, 귀, 피부 = <strong>센서</strong> (세상을 감지)</li>
+<li>뇌 = <strong>Pico</strong> (판단하고 결정)</li>
+<li>
+<p>손, 발, 입 = <strong>액추에이터</strong> (행동으로 반응)</p>
+</li>
+<li>
+<p><strong>정확한 정의</strong>: 컴퓨터가 <strong>물리적 세계</strong>와 상호작용하는 것. 센서로 환경을 감지하고, 프로그램으로 판단하고, 액추에이터로 물리적 변화를 만들어내는 시스템이야.</p>
+</li>
+<li>
+<p><strong>예시로 확인</strong>:
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│     입력(센서)          처리(Pico)         출력(액추에이터)   │
+│                                                             │
+│    ┌─────────┐       ┌─────────┐       ┌─────────┐        │
+│    │  👁️    │       │  🧠    │       │  💪    │        │
+│    │ 세상을  │  ──→  │ 판단   │  ──→  │ 반응   │        │
+│    │ 감지    │       │        │       │        │        │
+│    └─────────┘       └─────────┘       └─────────┘        │
+│                                                             │
+│    • 온도 센서         &quot;26도 넘으면&quot;      • LED 켜기        │
+│    • 거리 센서         &quot;30cm 이내면&quot;      • 모터 돌리기     │
+│    • 조도 센서         &quot;어두우면&quot;         • 소리 내기       │
+│    • 소음 센서         &quot;시끄러우면&quot;       • 화면 표시       │
+│    • 버튼              &quot;누르면&quot;                            │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div></p>
+</li>
+</ol>
+<p><strong>쉽게 말하면</strong>: <strong>센서로 느끼고</strong> → <strong>Pico가 생각하고</strong> → <strong>액추에이터가 행동</strong>하는 구조야!</p>
+<hr />
+<h3 id="3-sensor-actuator">개념 3: 센서(Sensor)와 액추에이터(Actuator)<a class="headerlink" href="#3-sensor-actuator" title="Permanent link">&para;</a></h3>
+<h4 id="sensor-">센서(Sensor) - 입력 장치<a class="headerlink" href="#sensor-" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>비유로 시작</strong>: 센서는 마치 <strong>"로봇의 감각 기관"</strong>이야. 사람이 눈으로 보고, 귀로 듣고, 피부로 느끼듯이, 센서는 주변 환경을 감지해서 <strong>숫자 데이터</strong>로 바꿔줘.</p>
+</li>
+<li>
+<p><strong>정확한 정의</strong>: 물리적 현상(빛, 소리, 온도, 거리 등)을 <strong>전기 신호</strong>로 변환하여 컴퓨터가 이해할 수 있는 <strong>데이터</strong>로 만들어주는 장치.</p>
+</li>
+<li>
+<p><strong>우리가 사용할 센서들</strong>:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>센서</th>
+<th>무엇을 감지?</th>
+<th>어디에 쓸까?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌡️ <strong>온습도 센서</strong> (DHT20)</td>
+<td>온도, 습도</td>
+<td>환기 필요 여부, 불쾌지수</td>
+</tr>
+<tr>
+<td>💡 <strong>조도 센서</strong></td>
+<td>빛의 밝기</td>
+<td>자동 조명, 손 가림 감지</td>
+</tr>
+<tr>
+<td>📏 <strong>초음파 거리 센서</strong></td>
+<td>물체까지 거리</td>
+<td>사람 감지, 손 제스처</td>
+</tr>
+<tr>
+<td>🔊 <strong>소음 센서</strong></td>
+<td>소리 크기</td>
+<td>소음 경고, 박수 감지</td>
+</tr>
+<tr>
+<td>🔘 <strong>버튼</strong></td>
+<td>누름 여부</td>
+<td>수동 조작, 선택 입력</td>
+</tr>
+</tbody>
+</table>
+<h4 id="actuator-">액추에이터(Actuator) - 출력 장치<a class="headerlink" href="#actuator-" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>비유로 시작</strong>: 액추에이터는 마치 <strong>"로봇의 손발과 입"</strong>이야. 뇌(Pico)가 결정한 것을 <strong>실제 행동</strong>으로 옮겨줘.</p>
+</li>
+<li>
+<p><strong>정확한 정의</strong>: 전기 신호를 받아서 <strong>물리적인 동작</strong>(빛, 소리, 움직임 등)을 만들어내는 장치.</p>
+</li>
+<li>
+<p><strong>우리가 사용할 액추에이터들</strong>:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>액추에이터</th>
+<th>무엇을 하나?</th>
+<th>어디에 쓸까?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>💡 <strong>LED</strong></td>
+<td>빛을 낸다</td>
+<td>상태 표시, 신호등, 알림</td>
+</tr>
+<tr>
+<td>🔔 <strong>부저</strong></td>
+<td>소리를 낸다</td>
+<td>알림음, 경고음, 멜로디</td>
+</tr>
+<tr>
+<td>🔄 <strong>서보모터</strong></td>
+<td>각도 회전 (0~180°)</td>
+<td>문 열기, 손 흔들기, 표시기</td>
+</tr>
+<tr>
+<td>🌀 <strong>DC모터</strong></td>
+<td>계속 회전</td>
+<td>선풍기, 바퀴, 환기팬</td>
+</tr>
+<tr>
+<td>📺 <strong>OLED 디스플레이</strong></td>
+<td>글자/그림 표시</td>
+<td>정보 표시, 대시보드</td>
+</tr>
+</tbody>
+</table>
+<p><strong>쉽게 말하면</strong>: 
+- <strong>센서</strong> = 세상을 <strong>느끼는</strong> 장치 (입력)
+- <strong>액추에이터</strong> = 세상에 <strong>반응하는</strong> 장치 (출력)</p>
+<hr />
+<h3 id="4-vs">개념 4: "측정 프로젝트" vs "리빙랩 프로젝트"<a class="headerlink" href="#4-vs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    측정 프로젝트                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   [센서] ──→ [데이터 수집] ──→ [그래프] ──→ [제안서]        │
+│                                                             │
+│   &quot;교실 온도가 26도를 넘는 시간이 하루 3시간입니다.         │
+│    따라서 환기 시스템이 필요합니다.&quot; (끝)                   │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│                    리빙랩 프로젝트                           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   [센서] ──→ [Pico 판단] ──→ [액추에이터] ──→ [설치!]       │
+│                                                             │
+│   온도 26도 넘으면 → 자동으로 선풍기 ON 🌀                  │
+│   + 실제로 교실에 설치해서 작동!                            │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>비교 항목</th>
+<th>측정 프로젝트</th>
+<th>리빙랩 프로젝트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사용 장치</td>
+<td>센서만</td>
+<td>센서 + <strong>액추에이터</strong></td>
+</tr>
+<tr>
+<td>최종 결과</td>
+<td>데이터, 그래프, 제안서</td>
+<td><strong>작동하는 프로토타입</strong></td>
+</tr>
+<tr>
+<td>문제 해결</td>
+<td>말로 제안</td>
+<td><strong>실제로 해결</strong></td>
+</tr>
+<tr>
+<td>설치 여부</td>
+<td>❌ 없음</td>
+<td>✅ <strong>학교에 설치</strong></td>
+</tr>
+<tr>
+<td>느낌</td>
+<td>"이렇게 하면 좋겠어요"</td>
+<td><strong>"이거 진짜 돌아가요!"</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>쉽게 말하면</strong>: 측정은 "문제가 있어요"라고 알려주는 것, 리빙랩은 <strong>"문제를 해결했어요"</strong>라고 보여주는 것!</p>
+<hr />
+<h2 id="_4">🔨 따라하기: 리빙랩 사례 탐구<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 실제 리빙랩 사례 살펴보기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p><strong>목표</strong>: 우리가 만들 수 있는 리빙랩 프로젝트가 어떤 것인지 상상해보자.</p>
+<h4 id="1">사례 1: 화장실 사용중 표시 시스템 🚻<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>```
+┌─────────────────────────────────────────────────────────────┐
+│  [문제]                                                     │
+│  • 화장실 칸이 사용 중인지 밖에서 알 수 없음               │
+│  • 문을 하나하나 밀어봐야 함 → 민망함                       │
+│                                                             │
+│  [해결책]                                                   │
+│  ┌─────────┐      ┌─────────┐      ┌─────────┐            │
+│  │ 📏     │      │  🧠    │      │ 💡🔴   │            │
+│  │ 거리   │ ──→  │  Pico  │ ──→  │ LED    │            │
+│  │ 센서   │      │        │      │ 빨강   │            │
+│  └─────────┘      └─────────┘      └─────────┘            │
+│                                                             │
+│  작동 원리:                                                 │
+│  • 칸 안에 사람이 있으면 → 거리센서가 가까운 거리 감지     │
+│  • Pico가 "사용 중"이라고 판단                             │
+│  • 밖의 LED를 빨간색으로 켬                                │
+│                                                             </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
