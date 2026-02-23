@@ -9,7 +9,7 @@
         <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
       
       
@@ -27,11 +27,14 @@
     
     
       
-        <title>소리를 내다 - 부저 제어 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+        <title>소리를 내다 - 부저 제어 - Living Lab 테스트</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,10 +48,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pretendard,+Noto+Sans+KR,+sans-serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+monospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Pretendard, Noto Sans KR, sans-serif";--md-code-font:"JetBrains Mono, monospace"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -59,7 +64,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-header__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -96,7 +108,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            교실 리빙랩: 측정을 넘어 문제해결까지
+            Living Lab 테스트
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -108,6 +120,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -204,6 +242,8 @@
           
   
   
+    
+  
   Part 1 - 입력과 출력의 기초
 
         </a>
@@ -223,6 +263,8 @@
         <a href="../chapter08/" class="md-tabs__link">
           
   
+  
+    
   
   Part 2 - 거리와 빛으로 세상 감지
 
@@ -254,13 +296,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-nav__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    교실 리빙랩: 측정을 넘어 문제해결까지
+    Living Lab 테스트
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -301,6 +343,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -740,6 +798,22 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1165,12 +1239,12 @@
 
 <h1 id="-">🔔 소리를 내다 - 부저 제어<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
 <h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 부저의 작동 원리를 이해하고 설명할 수 있다</li>
-<li>[ ] 주파수와 음높이의 관계를 이해할 수 있다</li>
-<li>[ ] 다양한 높이의 소리를 만들 수 있다</li>
-<li>[ ] 도레미파솔라시도 음계를 연주할 수 있다</li>
-<li>[ ] 간단한 멜로디를 코드로 만들 수 있다</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 부저의 작동 원리를 이해하고 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 주파수와 음높이의 관계를 이해할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 다양한 높이의 소리를 만들 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 도레미파솔라시도 음계를 연주할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 간단한 멜로디를 코드로 만들 수 있다</li>
 </ul>
 <hr />
 <h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
@@ -1181,20 +1255,20 @@
 <li>긴급한 상황일 때 → 빛보다 소리가 더 효과적</li>
 </ul>
 <p><strong>소리는 방향과 상관없이 전달되는 강력한 출력 수단</strong>이에요.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                    소리가 필요한 순간들                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  🚗 자동차 후방 센서      &quot;삐삐삐&quot; → 뒤에 장애물!            │
-│  ⏰ 알람 시계            &quot;띠리리링&quot; → 일어날 시간!           │
-│  🎮 게임 효과음          &quot;띵동!&quot; → 아이템 획득!              │
-│  🚨 화재 경보기          &quot;삐이이이&quot; → 대피하세요!            │
-│  📱 카카오톡             &quot;카톡&quot; → 메시지 왔다!               │
-│                                                             │
-│  → 모두 &quot;상황을 소리로 알려주는&quot; 시스템                      │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│                    소리가 필요한 순간들                       │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│                                                             │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  🚗 자동차 후방 센서      &quot;삐삐삐&quot; → 뒤에 장애물!            │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  ⏰ 알람 시계            &quot;띠리리링&quot; → 일어날 시간!           │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  🎮 게임 효과음          &quot;띵동!&quot; → 아이템 획득!              │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  🚨 화재 경보기          &quot;삐이이이&quot; → 대피하세요!            │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  📱 카카오톡             &quot;카톡&quot; → 메시지 왔다!               │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│                                                             │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  → 모두 &quot;상황을 소리로 알려주는&quot; 시스템                      │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│                                                             │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p>이번 장에서 부저를 배우면, 나중에 이런 것들을 만들 수 있어요:
 - 거리가 가까워지면 경고음이 나는 <strong>후방 감지기</strong>
 - 온도가 높으면 알려주는 <strong>과열 경보기</strong>
@@ -1205,23 +1279,23 @@
 <p><strong>비유로 시작</strong>: 부저는 마치 <strong>아주 단순한 스피커</strong>와 같아요. 스피커가 다양한 소리를 내는 것처럼, 부저도 전기 신호를 받아서 소리로 바꿔줘요.</p>
 <p><strong>정확한 정의</strong>: 부저는 <strong>전기 신호를 소리(진동)로 변환하는 출력 장치</strong>예요. 우리가 사용할 Grove 부저는 "패시브 부저"로, 우리가 보내는 신호에 따라 다양한 음높이의 소리를 낼 수 있어요.</p>
 <p><strong>예시로 확인</strong>: 전자레인지가 "삐" 하고 울리거나, 엘리베이터가 "딩동" 하는 소리가 모두 부저에서 나와요.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                    부저의 두 가지 종류                        │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  [액티브 부저]                  [패시브 부저] ← 우리가 사용   │
-│  ┌──────────┐                  ┌──────────┐                 │
-│  │  + ──┐   │                  │  + ──┐   │                 │
-│  │  회로 │   │                  │  판만 │   │                 │
-│  │  내장 │   │                  │  있음 │   │                 │
-│  └──────────┘                  └──────────┘                 │
-│                                                             │
-│  • 전원만 연결하면 소리남       • 신호를 보내야 소리남        │
-│  • 한 가지 음만 가능            • 다양한 음높이 가능          │
-│  • 단순 알림용                  • 멜로디 연주 가능            │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│                    부저의 두 가지 종류                        │
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│                                                             │
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│  [액티브 부저]                  [패시브 부저] ← 우리가 사용   │
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│  ┌──────────┐                  ┌──────────┐                 │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│  │  + ──┐   │                  │  + ──┐   │                 │
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│  │  회로 │   │                  │  판만 │   │                 │
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│  │  내장 │   │                  │  있음 │   │                 │
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│  └──────────┘                  └──────────┘                 │
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│                                                             │
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│  • 전원만 연결하면 소리남       • 신호를 보내야 소리남        │
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│  • 한 가지 음만 가능            • 다양한 음높이 가능          │
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│  • 단순 알림용                  • 멜로디 연주 가능            │
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│                                                             │
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: 부저는 전기로 "삐" 소리를 내는 작은 스피커야!</p>
 <hr />
 <h3 id="2-frequency">개념 2: 주파수(Frequency)와 음높이<a class="headerlink" href="#2-frequency" title="Permanent link">&para;</a></h3>
@@ -1230,26 +1304,26 @@
 <p><strong>예시로 확인</strong>: 
 - 낮은 '도' 음: 약 262Hz (1초에 262번 진동)
 - 높은 '도' 음: 약 523Hz (1초에 523번 진동, 2배!)</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                  주파수와 음높이의 관계                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  낮은 주파수 (200Hz)           높은 주파수 (1000Hz)          │
-│  ∿∿∿∿∿∿∿                      ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿          │
-│  천천히 진동                   빠르게 진동                   │
-│  → 낮은 음 🔈                  → 높은 음 🔊                  │
-│                                                             │
-│  ┌──────────────────────────────────────────────────┐       │
-│  │  100Hz   500Hz   1000Hz   2000Hz   4000Hz       │       │
-│  │    │───────│────────│────────│────────│         │       │
-│  │   저음    중음     고음    아주고음  초고음      │       │
-│  │  (웅웅)  (삐)    (삐이)   (찌이)   (귀아픔)     │       │
-│  └──────────────────────────────────────────────────┘       │
-│                                                             │
-│  💡 사람이 들을 수 있는 범위: 약 20Hz ~ 20,000Hz            │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│                  주파수와 음높이의 관계                       │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│                                                             │
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│  낮은 주파수 (200Hz)           높은 주파수 (1000Hz)          │
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│  ∿∿∿∿∿∿∿                      ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿          │
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│  천천히 진동                   빠르게 진동                   │
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│  → 낮은 음 🔈                  → 높은 음 🔊                  │
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│                                                             │
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│  ┌──────────────────────────────────────────────────┐       │
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│  │  100Hz   500Hz   1000Hz   2000Hz   4000Hz       │       │
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│  │    │───────│────────│────────│────────│         │       │
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│  │   저음    중음     고음    아주고음  초고음      │       │
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>│  │  (웅웅)  (삐)    (삐이)   (찌이)   (귀아픔)     │       │
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>│  └──────────────────────────────────────────────────┘       │
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>│                                                             │
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>│  💡 사람이 들을 수 있는 범위: 약 20Hz ~ 20,000Hz            │
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│                                                             │
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: 주파수가 높으면 높은 소리, 낮으면 낮은 소리!</p>
 <hr />
 <h3 id="3-pwm">개념 3: PWM으로 소리 만들기<a class="headerlink" href="#3-pwm" title="Permanent link">&para;</a></h3>
@@ -1258,28 +1332,28 @@
 <p><strong>예시로 확인</strong>: 
 - 262Hz로 PWM → 1초에 262번 켰다 껐다 → '도' 음
 - 440Hz로 PWM → 1초에 440번 켰다 껐다 → '라' 음 (기준음)</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                   PWM으로 소리 만들기                         │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  PWM 신호 (262Hz = 도)                                      │
-│  │                                                          │
-│  │  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ... (1초에 262번)       │
-│  │──┘  └──┘  └──┘  └──┘  └──┘  └──                         │
-│  │                                                          │
-│  └──────────────────────────────────────────────────→ 시간  │
-│                                                             │
-│  PWM 신호 (523Hz = 높은 도)                                 │
-│  │                                                          │
-│  │ ┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐ ... (1초에 523번)     │
-│  │─┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└─                       │
-│  │                                                          │
-│  └──────────────────────────────────────────────────→ 시간  │
-│                                                             │
-│  → 더 빠르게 반복 = 더 높은 음!                              │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│                   PWM으로 소리 만들기                         │
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│                                                             │
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│  PWM 신호 (262Hz = 도)                                      │
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│  │                                                          │
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│  │  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ... (1초에 262번)       │
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│  │──┘  └──┘  └──┘  └──┘  └──┘  └──                         │
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│  │                                                          │
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│  └──────────────────────────────────────────────────→ 시간  │
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>│                                                             │
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>│  PWM 신호 (523Hz = 높은 도)                                 │
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>│  │                                                          │
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>│  │ ┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐┌┐ ... (1초에 523번)     │
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>│  │─┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└┘└─                       │
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>│  │                                                          │
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>│  └──────────────────────────────────────────────────→ 시간  │
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>│                                                             │
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>│  → 더 빠르게 반복 = 더 높은 음!                              │
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>│                                                             │
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: 빠르게 켰다 껐다 하면 소리가 나고, 그 속도가 음높이를 결정해!</p>
 <hr />
 <h3 id="_4">📌 알아보기: 도레미 음계의 주파수<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -1349,41 +1423,41 @@
 <hr />
 <h2 id="_5">🔨 따라하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="_6">준비물 확인<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                        준비물                                │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ✅ Raspberry Pi Pico (USB 연결됨)                          │
-│  ✅ Grove Shield for Pico                                   │
-│  ✅ Grove 부저 (Passive Buzzer)                             │
-│  ✅ Grove 케이블 1개                                        │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>│                        준비물                                │
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│                                                             │
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│  ✅ Raspberry Pi Pico (USB 연결됨)                          │
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│  ✅ Grove Shield for Pico                                   │
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│  ✅ Grove 부저 (Passive Buzzer)                             │
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│  ✅ Grove 케이블 1개                                        │
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>│                                                             │
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <h3 id="_7">하드웨어 연결<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                      연결 방법                               │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│         [Grove 부저]                                        │
-│             │                                               │
-│         Grove 케이블                                        │
-│             │                                               │
-│             ▼                                               │
-│    ┌─────────────────────────────────────┐                 │
-│    │      Grove Shield for Pico          │                 │
-│    │                                     │                 │
-│    │   D16   D18   D20   ...            │                 │
-│    │    ■     ■     ●     ...   ← D20에 연결              │
-│    │                                     │                 │
-│    │      [Pico 장착됨]                  │                 │
-│    └─────────────────────────────────────┘                 │
-│                                                             │
-│  💡 Grove 케이블은 방향이 맞아야 해요!                       │
-│     홈이 있는 쪽을 맞춰서 끼워요.                            │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>│                      연결 방법                               │
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│                                                             │
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>│         [Grove 부저]                                        │
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│             │                                               │
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│         Grove 케이블                                        │
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>│             │                                               │
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│             ▼                                               │
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>│    ┌─────────────────────────────────────┐                 │
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│    │      Grove Shield for Pico          │                 │
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>│    │                                     │                 │
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>│    │   D16   D18   D20   ...            │                 │
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>│    │    ■     ■     ●     ...   ← D20에 연결              │
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>│    │                                     │                 │
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>│    │      [Pico 장착됨]                  │                 │
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>│    └─────────────────────────────────────┘                 │
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>│                                                             │
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>│  💡 Grove 케이블은 방향이 맞아야 해요!                       │
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>│     홈이 있는 쪽을 맞춰서 끼워요.                            │
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>│                                                             │
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <blockquote>
 <p>⚠️ <strong>주의</strong>: 부저를 D20 포트에 연결해요. 다른 포트를 사용하면 코드에서 핀 번호를 바꿔야 해요.</p>
 </blockquote>
@@ -1452,10 +1526,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/title-link.js"></script>
       
     
   </body>

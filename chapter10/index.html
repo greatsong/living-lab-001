@@ -9,7 +9,7 @@
         <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
       
       
@@ -27,11 +27,14 @@
     
     
       
-        <title>거리를 재다 - 초음파 센서 기초 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+        <title>거리를 재다 - 초음파 센서 기초 - Living Lab 테스트</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,10 +48,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pretendard,+Noto+Sans+KR,+sans-serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+monospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Pretendard, Noto Sans KR, sans-serif";--md-code-font:"JetBrains Mono, monospace"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -59,7 +64,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-header__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -96,7 +108,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            교실 리빙랩: 측정을 넘어 문제해결까지
+            Living Lab 테스트
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -108,6 +120,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -202,6 +240,8 @@
           
   
   
+    
+  
   Part 1 - 입력과 출력의 기초
 
         </a>
@@ -223,6 +263,8 @@
         <a href="../chapter08/" class="md-tabs__link">
           
   
+  
+    
   
   Part 2 - 거리와 빛으로 세상 감지
 
@@ -254,13 +296,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-nav__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    교실 리빙랩: 측정을 넘어 문제해결까지
+    Living Lab 테스트
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -299,6 +341,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -556,6 +614,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1303,28 +1377,28 @@
 </blockquote>
 <hr />
 <h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 초음파 센서의 작동 원리(음파 반사와 시간 측정)를 설명할 수 있다</li>
-<li>[ ] 초음파 센서를 올바르게 연결할 수 있다</li>
-<li>[ ] 거리를 측정하고 cm 단위로 시리얼 모니터에 출력할 수 있다</li>
-<li>[ ] 측정 가능 범위(2cm~400cm)와 오차 요인을 이해할 수 있다</li>
-<li>[ ] 거리에 따라 LED 색상이 바뀌는 "신호등" 시스템을 만들 수 있다</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 초음파 센서의 작동 원리(음파 반사와 시간 측정)를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 초음파 센서를 올바르게 연결할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 거리를 측정하고 cm 단위로 시리얼 모니터에 출력할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 측정 가능 범위(2cm~400cm)와 오차 요인을 이해할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 거리에 따라 LED 색상이 바뀌는 "신호등" 시스템을 만들 수 있다</li>
 </ul>
 <hr />
 <h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>박쥐를 본 적 있어? 어둠 속에서도 부딪히지 않고 날아다니지. 어떻게 그게 가능할까?</p>
 <p>박쥐는 <strong>초음파</strong>를 쏘고, 물체에 부딪혀 돌아오는 시간을 측정해서 거리를 알아내. 이걸 <strong>반향정위(echolocation)</strong>라고 해.</p>
-<div class="highlight"><pre><span></span><code>🦇 박쥐의 초음파 원리
-
-     삐익! →→→
-    ┌───┐         ┌─────┐
-    │🦇│─────────→│ 벽  │
-    └───┘←─────── └─────┘
-          ←←← 삐익!
-
-   &quot;0.01초 만에 돌아왔네? 
-    그럼 벽까지 약 1.7m구나!&quot;
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>🦇 박쥐의 초음파 원리
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>     삐익! →→→
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ┌───┐         ┌─────┐
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │🦇│─────────→│ 벽  │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    └───┘←─────── └─────┘
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>          ←←← 삐익!
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   &quot;0.01초 만에 돌아왔네? 
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    그럼 벽까지 약 1.7m구나!&quot;
+</span></code></pre></div>
 <p><strong>초음파 센서</strong>는 이 원리를 그대로 따라한 거야!</p>
 <h3 id="_3">실생활에서 초음파가 쓰이는 곳<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <table>
@@ -1375,45 +1449,45 @@
 <h3 id="2">개념 2: 거리 = 속도 × 시간<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <p><strong>비유로 시작</strong>: "친구에게 '야호!'하고 소리치면 메아리가 돌아오잖아. 멀리 있는 산일수록 메아리가 늦게 돌아오지?"</p>
 <p><strong>정확한 정의</strong>: 
-<div class="highlight"><pre><span></span><code>거리 = (소리의 속도 × 왕복 시간) ÷ 2
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>거리 = (소리의 속도 × 왕복 시간) ÷ 2
+</span></code></pre></div></p>
 <p>소리는 공기 중에서 초속 약 <strong>343m</strong>(340m/s로 계산해도 OK)로 이동해. 
 초음파를 쏘고 돌아오는 시간을 측정하면 거리를 계산할 수 있어.</p>
 <p><strong>예시로 확인</strong>:
-<div class="highlight"><pre><span></span><code>예: 초음파가 돌아오는데 0.001초(1ms) 걸렸다면?
-
-  거리 = (343m/s × 0.001s) ÷ 2
-       = 0.343m ÷ 2
-       = 0.1715m
-       = 약 17cm
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>예: 초음파가 돌아오는데 0.001초(1ms) 걸렸다면?
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  거리 = (343m/s × 0.001s) ÷ 2
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>       = 0.343m ÷ 2
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>       = 0.1715m
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>       = 약 17cm
+</span></code></pre></div></p>
 <p><strong>왜 2로 나눌까?</strong> 🤔
-<div class="highlight"><pre><span></span><code>     발사! →→→
-    ┌────┐         ┌─────┐
-    │센서│─────────→│물체 │  ← 가는 거리
-    └────┘←─────── └─────┘
-          ←←← 도착!          ← 오는 거리
-
-   측정한 시간 = 가는 시간 + 오는 시간 (왕복!)
-   실제 거리 = 왕복 거리 ÷ 2
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>     발사! →→→
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    ┌────┐         ┌─────┐
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    │센서│─────────→│물체 │  ← 가는 거리
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    └────┘←─────── └─────┘
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>          ←←← 도착!          ← 오는 거리
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>   측정한 시간 = 가는 시간 + 오는 시간 (왕복!)
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   실제 거리 = 왕복 거리 ÷ 2
+</span></code></pre></div></p>
 <p><strong>쉽게 말하면</strong>: 소리가 갔다 오는 시간을 재서, 속도로 나누면 거리가 나와!</p>
 <hr />
 <h3 id="3-hc-sr04">개념 3: HC-SR04 초음파 센서 구조<a class="headerlink" href="#3-hc-sr04" title="Permanent link">&para;</a></h3>
 <p>우리가 사용할 센서는 <strong>HC-SR04</strong> (또는 Grove 초음파 센서)야.</p>
-<div class="highlight"><pre><span></span><code>    ┌─────────────────────────────┐
-    │  ┌─────┐       ┌─────┐     │
-    │  │  T  │       │  R  │     │  T = Transmitter (송신부)
-    │  │ 🔊  │       │ 🎤  │     │  R = Receiver (수신부)
-    │  └─────┘       └─────┘     │
-    │                             │
-    │   VCC  Trig  Echo  GND     │
-    │    │    │     │    │       │
-    └────┼────┼─────┼────┼───────┘
-         │    │     │    │
-        5V  신호   신호  접지
-           보내기  받기
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>    ┌─────────────────────────────┐
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    │  ┌─────┐       ┌─────┐     │
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    │  │  T  │       │  R  │     │  T = Transmitter (송신부)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    │  │ 🔊  │       │ 🎤  │     │  R = Receiver (수신부)
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    │  └─────┘       └─────┘     │
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    │                             │
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    │   VCC  Trig  Echo  GND     │
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    │    │    │     │    │       │
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    └────┼────┼─────┼────┼───────┘
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>         │    │     │    │
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        5V  신호   신호  접지
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>           보내기  받기
+</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1446,28 +1520,28 @@
 </tbody>
 </table>
 <h3 id="_5">작동 순서<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────┐
-│  초음파 센서 작동 과정                                    │
-├──────────────────────────────────────────────────────────┤
-│                                                          │
-│  1️⃣ Trig 핀에 10μs(마이크로초) 동안 HIGH 신호 보내기     │
-│     → &quot;준비, 발사!&quot;                                       │
-│                                                          │
-│  2️⃣ 센서가 8번의 40kHz 초음파 펄스 발사                  │
-│     → 삐삐삐삐삐삐삐삐 (우리 귀엔 안 들림)                │
-│                                                          │
-│  3️⃣ Echo 핀이 HIGH로 변함 (타이머 시작)                  │
-│     → &quot;초음파 출발했어!&quot;                                  │
-│                                                          │
-│  4️⃣ 초음파가 물체에 반사되어 돌아옴                      │
-│                                                          │
-│  5️⃣ Echo 핀이 LOW로 변함 (타이머 종료)                   │
-│     → &quot;초음파 도착했어!&quot;                                  │
-│                                                          │
-│  6️⃣ HIGH였던 시간 = 왕복 시간 → 거리 계산               │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>┌──────────────────────────────────────────────────────────┐
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>│  초음파 센서 작동 과정                                    │
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├──────────────────────────────────────────────────────────┤
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│                                                          │
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>│  1️⃣ Trig 핀에 10μs(마이크로초) 동안 HIGH 신호 보내기     │
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│     → &quot;준비, 발사!&quot;                                       │
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│                                                          │
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>│  2️⃣ 센서가 8번의 40kHz 초음파 펄스 발사                  │
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│     → 삐삐삐삐삐삐삐삐 (우리 귀엔 안 들림)                │
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>│                                                          │
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│  3️⃣ Echo 핀이 HIGH로 변함 (타이머 시작)                  │
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>│     → &quot;초음파 출발했어!&quot;                                  │
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>│                                                          │
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>│  4️⃣ 초음파가 물체에 반사되어 돌아옴                      │
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>│                                                          │
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>│  5️⃣ Echo 핀이 LOW로 변함 (타이머 종료)                   │
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>│     → &quot;초음파 도착했어!&quot;                                  │
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>│                                                          │
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>│  6️⃣ HIGH였던 시간 = 왕복 시간 → 거리 계산               │
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>│                                                          │
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>└──────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: Trig로 "쏴!"하고, Echo로 "돌아왔어!"를 감지해. 그 사이 시간을 재면 끝!</p>
 <hr />
 <h3 id="4">개념 4: 측정 범위와 한계<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
@@ -1502,18 +1576,18 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>        측정 가능 범위 (위에서 본 모습)
-
-              15°↗
-               /
-              /
-    [센서]───────────────────→ 최대 4m
-              \
-               \
-              15°↘
-
-    ※ 원뿔 모양으로 초음파가 퍼져나감
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>        측정 가능 범위 (위에서 본 모습)
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>              15°↗
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>               /
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>              /
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    [센서]───────────────────→ 최대 4m
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>              \
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>               \
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>              15°↘
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    ※ 원뿔 모양으로 초음파가 퍼져나감
+</span></code></pre></div>
 <h3 id="_6">오차가 생기는 이유<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -1596,16 +1670,16 @@
 <p><strong>목표</strong>: 초음파 센서를 Pico에 연결하기</p>
 <h4 id="grove">Grove 초음파 센서 연결 (쉬움!)<a class="headerlink" href="#grove" title="Permanent link">&para;</a></h4>
 <p>Grove 쉴드를 사용하면 정말 간단해:</p>
-<div class="highlight"><pre><span></span><code>    ┌─────────────────────────────────────┐
-    │         Grove Shield for Pico       │
-    │                                     │
-    │   D16 ●────┐                        │
-    │            │  Grove 케이블          │
-    │            └────────[초음파 센서]   │
-    │                                     │
-    │   D20 ●  D18 ●  I2C ●  ...         │
-    └─────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>    ┌─────────────────────────────────────┐
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    │         Grove Shield for Pico       │
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    │                                     │
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    │   D16 ●────┐                        │
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    │            │  Grove 케이블          │
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    │            └────────[초음파 센서]   │
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    │                                     │
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    │   D20 ●  D18 ●  I2C ●  ...         │
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    └─────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>연결 방법</strong>:
 1. Grove 쉴드를 Pico에 꽂는다
 2. 초음파 센서를 Grove 케이블로 <strong>D16</strong> 포트에 연결한다</p>
@@ -1614,23 +1688,23 @@
 </blockquote>
 <h4 id="hc-sr04">HC-SR04 직접 연결 (일반 초음파 센서)<a class="headerlink" href="#hc-sr04" title="Permanent link">&para;</a></h4>
 <p>Grove가 아닌 일반 HC-SR04를 사용한다면:</p>
-<div class="highlight"><pre><span></span><code>    HC-SR04          Pico
-    ─────────        ────────
-    VCC     ────────  5V (VBUS)
-    GND     ────────  GND
-    Trig    ────────  GP16
-    Echo    ────────  GP17
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>         [HC-SR04 센서]
-
-    VCC ─────── 5V (VBUS, 40번 핀)
-
-    Trig ────── GP16 (21번 핀)
-
-    Echo ────── GP17 (22번 핀)
-
-    GND ─────── GND (38번 핀)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>    HC-SR04          Pico
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    ─────────        ────────
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    VCC     ────────  5V (VBUS)
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    GND     ────────  GND
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    Trig    ────────  GP16
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    Echo    ────────  GP17
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>         [HC-SR04 센서]
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    VCC ─────── 5V (VBUS, 40번 핀)
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    Trig ────── GP16 (21번 핀)
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    Echo ────── GP17 (22번 핀)
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    GND ─────── GND (38번 핀)
+</span></code></pre></div>
 <blockquote>
 <p>⚠️ <strong>주의</strong>: HC-SR04는 5V가 필요해! 3.3V로 연결하면 제대로 작동 안 해.</p>
 </blockquote>
@@ -1700,10 +1774,14 @@ import time</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/title-link.js"></script>
       
     
   </body>

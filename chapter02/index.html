@@ -9,7 +9,7 @@
         <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
       
       
@@ -27,11 +27,14 @@
     
     
       
-        <title>Pico와 첫 만남 - 개발환경 설정 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+        <title>Pico와 첫 만남 - 개발환경 설정 - Living Lab 테스트</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,10 +48,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pretendard,+Noto+Sans+KR,+sans-serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+monospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Pretendard, Noto Sans KR, sans-serif";--md-code-font:"JetBrains Mono, monospace"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -59,7 +64,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-header__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -96,7 +108,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            교실 리빙랩: 측정을 넘어 문제해결까지
+            Living Lab 테스트
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -108,6 +120,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -204,6 +242,8 @@
           
   
   
+    
+  
   Part 1 - 입력과 출력의 기초
 
         </a>
@@ -223,6 +263,8 @@
         <a href="../chapter08/" class="md-tabs__link">
           
   
+  
+    
   
   Part 2 - 거리와 빛으로 세상 감지
 
@@ -254,13 +296,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-nav__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    교실 리빙랩: 측정을 넘어 문제해결까지
+    Living Lab 테스트
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -301,6 +343,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -690,6 +748,22 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -1065,42 +1139,42 @@
 
 <h1 id="chapter-02-pico-">Chapter 02: Pico와 첫 만남 - 개발환경 설정<a class="headerlink" href="#chapter-02-pico-" title="Permanent link">&para;</a></h1>
 <h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] Raspberry Pi Pico가 무엇인지 설명할 수 있다</li>
-<li>[ ] Grove Shield의 역할과 장점을 이해할 수 있다</li>
-<li>[ ] Thonny IDE를 설치하고 Pico와 연결할 수 있다</li>
-<li>[ ] 첫 번째 Python 코드를 Pico에서 실행할 수 있다</li>
-<li>[ ] 코드가 컴퓨터에서 Pico로 전송되는 과정을 설명할 수 있다</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Raspberry Pi Pico가 무엇인지 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Grove Shield의 역할과 장점을 이해할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Thonny IDE를 설치하고 Pico와 연결할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 첫 번째 Python 코드를 Pico에서 실행할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 코드가 컴퓨터에서 Pico로 전송되는 과정을 설명할 수 있다</li>
 </ul>
 <hr />
 <h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>상상해봐. 네가 만든 코드가 컴퓨터 화면 속에만 있는 게 아니라, <strong>실제 세상에서 LED를 켜고, 모터를 돌리고, 센서로 온도를 측정</strong>한다면?</p>
 <p>이게 바로 <strong>피지컬 컴퓨팅(Physical Computing)</strong>이야.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   일반 프로그래밍           vs       피지컬 컴퓨팅          │
-│                                                             │
-│   ┌─────────────┐               ┌─────────────┐            │
-│   │  컴퓨터     │               │  컴퓨터     │            │
-│   │  ┌───────┐  │               │  ┌───────┐  │            │
-│   │  │ 코드  │  │               │  │ 코드  │  │            │
-│   │  └───────┘  │               │  └───┬───┘  │            │
-│   │      ↓      │               │      ↓      │            │
-│   │  ┌───────┐  │               └──────┼──────┘            │
-│   │  │ 화면  │  │                      ↓                   │
-│   │  └───────┘  │               ┌─────────────┐            │
-│   └─────────────┘               │    Pico     │            │
-│                                 │  ┌───────┐  │            │
-│   결과: 화면에 출력              │  │ 센서  │──┼──→ 실제 세상│
-│                                 │  │ LED   │  │            │
-│                                 │  │ 모터  │  │            │
-│                                 │  └───────┘  │            │
-│                                 └─────────────┘            │
-│                                                             │
-│                                 결과: 실제 세상이 바뀜!     │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│                                                             │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   일반 프로그래밍           vs       피지컬 컴퓨팅          │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│                                                             │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ┌─────────────┐               ┌─────────────┐            │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   │  컴퓨터     │               │  컴퓨터     │            │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│   │  ┌───────┐  │               │  ┌───────┐  │            │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   │  │ 코드  │  │               │  │ 코드  │  │            │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   │  └───────┘  │               │  └───┬───┘  │            │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   │      ↓      │               │      ↓      │            │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│   │  ┌───────┐  │               └──────┼──────┘            │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│   │  │ 화면  │  │                      ↓                   │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   │  └───────┘  │               ┌─────────────┐            │
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   └─────────────┘               │    Pico     │            │
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│                                 │  ┌───────┐  │            │
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   결과: 화면에 출력              │  │ 센서  │──┼──→ 실제 세상│
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│                                 │  │ LED   │  │            │
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│                                 │  │ 모터  │  │            │
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│                                 │  └───────┘  │            │
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│                                 └─────────────┘            │
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│                                                             │
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│                                 결과: 실제 세상이 바뀜!     │
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│                                                             │
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p>이 수업에서 우리는 <strong>"측정만 하지 말고, 학교를 바꿔보자"</strong>는 목표로 진행해. 
 온도가 높으면 자동으로 선풍기가 돌아가게 하고, 소음이 심하면 경고등이 켜지게 만들 거야.</p>
 <p>그 첫 걸음이 바로 <strong>개발 환경 설정</strong>이야. 
@@ -1117,25 +1191,25 @@ Pico도 센서로 감지하고, 코드로 판단하고, LED나 모터를 제어�
 - 온도 센서를 연결하면 → 온도를 측정할 수 있어
 - LED를 연결하면 → 빛을 켜고 끌 수 있어
 - 모터를 연결하면 → 바람을 일으킬 수 있어</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│              Raspberry Pi Pico 실물 크기 (약 51mm x 21mm)   │
-│                                                             │
-│    ┌─────────────────────────────────────────────────────┐  │
-│    │ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ │  │
-│    │                                                     │  │
-│    │     ┌─────────┐                    ┌────┐          │  │
-│    │     │ RP2040  │   Raspberry Pi     │USB │          │  │
-│    │     │  Chip   │      Pico          │    │          │  │
-│    │     └─────────┘                    └────┘          │  │
-│    │                                                     │  │
-│    │ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ │  │
-│    └─────────────────────────────────────────────────────┘  │
-│                                                             │
-│    ↑ 이 구멍들(○)이 GPIO 핀 - 센서나 부품을 연결하는 곳     │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│                                                             │
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│              Raspberry Pi Pico 실물 크기 (약 51mm x 21mm)   │
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│                                                             │
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│    ┌─────────────────────────────────────────────────────┐  │
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│    │ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ │  │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│    │                                                     │  │
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│    │     ┌─────────┐                    ┌────┐          │  │
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│    │     │ RP2040  │   Raspberry Pi     │USB │          │  │
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│    │     │  Chip   │      Pico          │    │          │  │
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│    │     └─────────┘                    └────┘          │  │
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│    │                                                     │  │
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│    │ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ │  │
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>│    └─────────────────────────────────────────────────────┘  │
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│                                                             │
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│    ↑ 이 구멍들(○)이 GPIO 핀 - 센서나 부품을 연결하는 곳     │
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│                                                             │
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: Pico는 <strong>손바닥 위의 작은 컴퓨터</strong>로, 센서를 읽고 부품을 제어하는 일을 해!</p>
 <hr />
 <h3 id="2-gpio">개념 2: GPIO 핀이란?<a class="headerlink" href="#2-gpio" title="Permanent link">&para;</a></h3>
@@ -1146,27 +1220,27 @@ Pico도 센서로 감지하고, 코드로 판단하고, LED나 모터를 제어�
 <p><strong>예시로 확인</strong>:
 - <strong>입력(Input)으로 사용</strong>: 버튼이 눌렸는지 확인, 온도 센서 값 읽기
 - <strong>출력(Output)으로 사용</strong>: LED 켜기, 모터 돌리기, 부저 울리기</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│                    GPIO 핀의 역할                           │
-│                                                             │
-│    ┌──────────┐           ┌──────────┐                     │
-│    │  센서    │           │   LED    │                     │
-│    │ (온도)   │           │  (빛)    │                     │
-│    └────┬─────┘           └────┬─────┘                     │
-│         │                      │                           │
-│         ↓ 입력                 ↑ 출력                      │
-│    ┌────┴──────────────────────┴────┐                      │
-│    │         GPIO 핀들              │                      │
-│    │  ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○  │                      │
-│    │           Pico                 │                      │
-│    └────────────────────────────────┘                      │
-│                                                             │
-│    - 입력 핀: 바깥 세상 → Pico (정보를 받아들임)            │
-│    - 출력 핀: Pico → 바깥 세상 (명령을 내보냄)              │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│                                                             │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│                    GPIO 핀의 역할                           │
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│                                                             │
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│    ┌──────────┐           ┌──────────┐                     │
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│    │  센서    │           │   LED    │                     │
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│    │ (온도)   │           │  (빛)    │                     │
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│    └────┬─────┘           └────┬─────┘                     │
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│         │                      │                           │
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│         ↓ 입력                 ↑ 출력                      │
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│    ┌────┴──────────────────────┴────┐                      │
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│    │         GPIO 핀들              │                      │
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│    │  ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○  │                      │
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>│    │           Pico                 │                      │
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>│    └────────────────────────────────┘                      │
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>│                                                             │
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>│    - 입력 핀: 바깥 세상 → Pico (정보를 받아들임)            │
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│    - 출력 핀: Pico → 바깥 세상 (명령을 내보냄)              │
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>│                                                             │
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: GPIO 핀은 <strong>Pico가 바깥 세상과 소통하는 통로</strong>야!</p>
 <hr />
 <h3 id="3-grove-shield">개념 3: Grove Shield란?<a class="headerlink" href="#3-grove-shield" title="Permanent link">&para;</a></h3>
@@ -1177,24 +1251,24 @@ Grove Shield도 Pico에 꽂으면 여러 센서와 부품을 <strong>케이블 �
 Pico 위에 끼우면 Grove 규격의 센서와 부품을 <strong>4핀 케이블 하나로</strong> 연결할 수 있어.
 복잡한 배선이나 납땜 없이도 다양한 프로젝트를 만들 수 있지!</p>
 <p><strong>예시로 확인</strong>:</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│           Grove Shield 없이 vs Grove Shield 사용            │
-│                                                             │
-│   [복잡한 방법]                    [쉬운 방법]              │
-│                                                             │
-│   빨강선──┐                        ┌─────────────┐         │
-│   검정선──┼──→ Pico               │ Grove Shield│         │
-│   노랑선──┤    (어디 꽂지?)        │ ┌─┐ ┌─┐ ┌─┐│         │
-│   하양선──┘                        │ │○│ │○│ │○││         │
-│                                    │ └─┘ └─┘ └─┘│         │
-│   → 선 4개를                       └──────┬──────┘         │
-│     각각 연결해야 함                      ↓                 │
-│   → 잘못 꽂으면 고장!              케이블 하나로 &quot;찰칵&quot;     │
-│                                    → 누구나 쉽게!          │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│                                                             │
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│           Grove Shield 없이 vs Grove Shield 사용            │
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│                                                             │
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   [복잡한 방법]                    [쉬운 방법]              │
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│                                                             │
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   빨강선──┐                        ┌─────────────┐         │
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│   검정선──┼──→ Pico               │ Grove Shield│         │
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│   노랑선──┤    (어디 꽂지?)        │ ┌─┐ ┌─┐ ┌─┐│         │
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│   하양선──┘                        │ │○│ │○│ │○││         │
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>│                                    │ └─┘ └─┘ └─┘│         │
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>│   → 선 4개를                       └──────┬──────┘         │
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>│     각각 연결해야 함                      ↓                 │
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>│   → 잘못 꽂으면 고장!              케이블 하나로 &quot;찰칵&quot;     │
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>│                                    → 누구나 쉽게!          │
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>│                                                             │
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>Grove 커넥터의 장점</strong>:
 | 장점 | 설명 |
 |------|------|
@@ -1211,27 +1285,27 @@ Thonny에서는 코드를 쓰고, <strong>실행하고</strong>, 결과를 바�
 <p><strong>정확한 정의</strong>: Thonny는 <strong>Python 전용 통합 개발 환경(IDE, Integrated Development Environment)</strong>이야.
 초보자를 위해 만들어져서 설치도 쉽고, Pico와의 연결도 간단해.</p>
 <p><strong>예시로 확인</strong>:</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│  Thonny IDE 화면 구성                                       │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │  파일  편집  보기  실행  도구  도움말               │   │
-│  ├─────────────────────────────────────────────────────┤   │
-│  │  ▶ 실행  ■ 정지  │ 저장 │                          │   │
-│  ├─────────────────────────────────────────────────────┤   │
-│  │                                                     │   │
-│  │  # 여기에 코드를 작성해요                           │   │
-│  │  print(&quot;Hello, Pico!&quot;)        ← 코드 작성 영역     │   │
-│  │                                                     │   │
-│  ├─────────────────────────────────────────────────────┤   │
-│  │  Shell (쉘)                                         │   │
-│  │  ──────────────────────────────                    │   │
-│  │  &gt;&gt;&gt; Hello, Pico!              ← 결과 출력 영역    │   │
-│  │  &gt;&gt;&gt;                                                │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>│  Thonny IDE 화면 구성                                       │
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│  ┌─────────────────────────────────────────────────────┐   │
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│  │  파일  편집  보기  실행  도구  도움말               │   │
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│  ├─────────────────────────────────────────────────────┤   │
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│  │  ▶ 실행  ■ 정지  │ 저장 │                          │   │
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│  ├─────────────────────────────────────────────────────┤   │
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>│  │                                                     │   │
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>│  │  # 여기에 코드를 작성해요                           │   │
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>│  │  print(&quot;Hello, Pico!&quot;)        ← 코드 작성 영역     │   │
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>│  │                                                     │   │
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>│  ├─────────────────────────────────────────────────────┤   │
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>│  │  Shell (쉘)                                         │   │
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>│  │  ──────────────────────────────                    │   │
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>│  │  &gt;&gt;&gt; Hello, Pico!              ← 결과 출력 영역    │   │
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>│  │  &gt;&gt;&gt;                                                │   │
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>│  └─────────────────────────────────────────────────────┘   │
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>│                                                             │
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: Thonny는 **코드 작성 + 실행 + 결과 확인을 한 곳에서 할 수</p>
 
 
@@ -1288,10 +1362,14 @@ Thonny에서는 코드를 쓰고, <strong>실행하고</strong>, 결과를 바�
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/title-link.js"></script>
       
     
   </body>

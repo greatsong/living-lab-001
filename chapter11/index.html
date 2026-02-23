@@ -9,7 +9,7 @@
         <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
       
       
@@ -27,11 +27,14 @@
     
     
       
-        <title>거리에 반응하는 신호등 - 조건문 활용 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+        <title>거리에 반응하는 신호등 - 조건문 활용 - Living Lab 테스트</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,10 +48,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pretendard,+Noto+Sans+KR,+sans-serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+monospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Pretendard, Noto Sans KR, sans-serif";--md-code-font:"JetBrains Mono, monospace"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -59,7 +64,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-header__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -96,7 +108,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            교실 리빙랩: 측정을 넘어 문제해결까지
+            Living Lab 테스트
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -108,6 +120,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -202,6 +240,8 @@
           
   
   
+    
+  
   Part 1 - 입력과 출력의 기초
 
         </a>
@@ -223,6 +263,8 @@
         <a href="../chapter08/" class="md-tabs__link">
           
   
+  
+    
   
   Part 2 - 거리와 빛으로 세상 감지
 
@@ -254,13 +296,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-nav__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    교실 리빙랩: 측정을 넘어 문제해결까지
+    Living Lab 테스트
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -299,6 +341,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -556,6 +614,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1143,32 +1217,32 @@
 
 <h1 id="chapter-11-">Chapter 11: 거리에 반응하는 신호등 - 조건문 활용<a class="headerlink" href="#chapter-11-" title="Permanent link">&para;</a></h1>
 <h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 거리 값에 따라 다른 LED를 켜는 if-elif-else 조건문을 작성할 수 있다</li>
-<li>[ ] 3색 LED 신호등 시스템(초록-노랑-빨강)을 구현할 수 있다</li>
-<li>[ ] 임계값(threshold)의 개념을 이해하고 조절할 수 있다</li>
-<li>[ ] 거리에 따라 깜빡임 속도가 변하는 효과를 만들 수 있다</li>
-<li>[ ] 실생활 '접근 감지' 시스템의 원리를 설명할 수 있다</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 거리 값에 따라 다른 LED를 켜는 if-elif-else 조건문을 작성할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 3색 LED 신호등 시스템(초록-노랑-빨강)을 구현할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 임계값(threshold)의 개념을 이해하고 조절할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 거리에 따라 깜빡임 속도가 변하는 효과를 만들 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 실생활 '접근 감지' 시스템의 원리를 설명할 수 있다</li>
 </ul>
 <hr />
 <h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>주차장에서 후진할 때 들어본 적 있지? "삐... 삐... 삐삐삐삐빕!" 벽에 가까워질수록 소리가 빨라지는 그 시스템. 또는 자동문 앞에 서면 문이 열리고, 멀어지면 닫히는 것. 이런 게 전부 <strong>거리 센서 + 조건문</strong>의 조합이야.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│  🚗 후방 감지 센서 - 우리가 만들 것과 똑같은 원리!          │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│    [벽]                                                     │
-│     ║                                                       │
-│     ║  ←── 30cm 이상: 🟢 안전 (초록)                       │
-│     ║                                                       │
-│     ║  ←── 10~30cm: 🟡 주의 (노랑)                         │
-│     ║                                                       │
-│     ║  ←── 10cm 이하: 🔴 위험! (빨강 + 빠른 깜빡임)        │
-│     ║                                                       │
-│    [🚗 차]                                                  │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  🚗 후방 감지 센서 - 우리가 만들 것과 똑같은 원리!          │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│                                                             │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│    [벽]                                                     │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│     ║                                                       │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│     ║  ←── 30cm 이상: 🟢 안전 (초록)                       │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│     ║                                                       │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│     ║  ←── 10~30cm: 🟡 주의 (노랑)                         │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│     ║                                                       │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│     ║  ←── 10cm 이하: 🔴 위험! (빨강 + 빠른 깜빡임)        │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│     ║                                                       │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│    [🚗 차]                                                  │
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│                                                             │
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p>이번 장에서는 단순히 "가까우면 켜고, 멀면 끈다"가 아니라, <strong>여러 구간으로 나누어</strong> 각각 다른 반응을 하는 코드를 만들어볼 거야. 이게 바로 <strong>다중 조건문</strong>이야.</p>
 <blockquote>
 <p>💭 <strong>생각해보기</strong>: 네가 자주 가는 장소에서 "거리에 따라 다르게 반응하는 것"을 본 적 있어? (자동문, 에스컬레이터 센서, 화장실 자동 조명 등)</p>
@@ -1186,35 +1260,35 @@
 </li>
 <li>
 <p><strong>예시로 확인</strong>:
-<div class="highlight"><pre><span></span><code><span class="n">distance</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># 거리 25cm</span>
-
-<span class="k">if</span> <span class="n">distance</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">:</span>      <span class="c1"># 30 이상? → 거짓 (25는 30보다 작음)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;안전&quot;</span><span class="p">)</span>       <span class="c1"># 건너뜀</span>
-<span class="k">elif</span> <span class="n">distance</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>    <span class="c1"># 10 이상? → 참! (25는 10보다 큼)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;주의&quot;</span><span class="p">)</span>       <span class="c1"># ✅ 이거 실행!</span>
-<span class="k">else</span><span class="p">:</span>                   <span class="c1"># 위에서 이미 걸렸으므로</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;위험&quot;</span><span class="p">)</span>       <span class="c1"># 건너뜀</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">distance</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># 거리 25cm</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">if</span> <span class="n">distance</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">:</span>      <span class="c1"># 30 이상? → 거짓 (25는 30보다 작음)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;안전&quot;</span><span class="p">)</span>       <span class="c1"># 건너뜀</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">elif</span> <span class="n">distance</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>    <span class="c1"># 10 이상? → 참! (25는 10보다 큼)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;주의&quot;</span><span class="p">)</span>       <span class="c1"># ✅ 이거 실행!</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">else</span><span class="p">:</span>                   <span class="c1"># 위에서 이미 걸렸으므로</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;위험&quot;</span><span class="p">)</span>       <span class="c1"># 건너뜀</span>
+</span></code></pre></div></p>
 </li>
 </ol>
 <p><strong>쉽게 말하면</strong>: 위에서부터 차례로 확인하다가, 처음 "맞다!"가 나오면 그것만 실행하고 끝!</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│  🔍 if-elif-else 실행 흐름                                  │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  거리 = 25cm 일 때:                                         │
-│                                                             │
-│  if distance &gt;= 30:  ─────→ 25 &gt;= 30? ❌ 거짓              │
-│      │                          ↓                           │
-│  elif distance &gt;= 10: ────→ 25 &gt;= 10? ✅ 참! → 실행!       │
-│      │                          │                           │
-│  else:                    (도달 안 함)                      │
-│                                                             │
-│  ⚠️ 순서가 중요해!                                          │
-│  만약 elif를 먼저 쓰면 30cm도 &quot;주의&quot;로 분류돼버림           │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│  🔍 if-elif-else 실행 흐름                                  │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│                                                             │
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│  거리 = 25cm 일 때:                                         │
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│                                                             │
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│  if distance &gt;= 30:  ─────→ 25 &gt;= 30? ❌ 거짓              │
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│      │                          ↓                           │
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│  elif distance &gt;= 10: ────→ 25 &gt;= 10? ✅ 참! → 실행!       │
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│      │                          │                           │
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│  else:                    (도달 안 함)                      │
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│                                                             │
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│  ⚠️ 순서가 중요해!                                          │
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>│  만약 elif를 먼저 쓰면 30cm도 &quot;주의&quot;로 분류돼버림           │
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>│                                                             │
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <hr />
 <h3 id="2-threshold">개념 2: 임계값 (Threshold)<a class="headerlink" href="#2-threshold" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1226,15 +1300,15 @@
 </li>
 <li>
 <p><strong>예시로 확인</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 우리가 정할 임계값들</span>
-<span class="n">THRESHOLD_FAR</span> <span class="o">=</span> <span class="mi">30</span>    <span class="c1"># 30cm 이상 = &quot;멀다&quot;의 기준</span>
-<span class="n">THRESHOLD_NEAR</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># 10cm 이하 = &quot;가깝다&quot;의 기준</span>
-
-<span class="c1"># 구간 분류</span>
-<span class="c1"># 거리 &gt;= 30cm      → 안전 (초록)</span>
-<span class="c1"># 10cm &lt; 거리 &lt; 30cm → 주의 (노랑)  </span>
-<span class="c1"># 거리 &lt;= 10cm      → 위험 (빨강)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 우리가 정할 임계값들</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">THRESHOLD_FAR</span> <span class="o">=</span> <span class="mi">30</span>    <span class="c1"># 30cm 이상 = &quot;멀다&quot;의 기준</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">THRESHOLD_NEAR</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># 10cm 이하 = &quot;가깝다&quot;의 기준</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># 구간 분류</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># 거리 &gt;= 30cm      → 안전 (초록)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># 10cm &lt; 거리 &lt; 30cm → 주의 (노랑)  </span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># 거리 &lt;= 10cm      → 위험 (빨강)</span>
+</span></code></pre></div></p>
 </li>
 </ol>
 <p><strong>쉽게 말하면</strong>: "여기부터는 다르게 행동해!"라고 정한 기준 숫자야.</p>
@@ -1245,18 +1319,18 @@
 <hr />
 <h3 id="3">개념 3: 구간별 동작 설계<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>실제 시스템을 만들 때는 <strong>"어떤 구간에서 어떻게 동작할지"</strong> 미리 정리하는 게 중요해.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│  📋 우리 신호등의 동작 설계표                               │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  구간              │ LED 상태        │ 추가 효과           │
-│  ─────────────────┼────────────────┼───────────────────   │
-│  30cm 이상 (안전)  │ 🟢 초록 켜짐    │ 계속 켜짐 (안정)    │
-│  10~30cm (주의)    │ 🟡 노랑 켜짐    │ 천천히 깜빡임       │
-│  10cm 이하 (위험)  │ 🔴 빨강 켜짐    │ 빠르게 깜빡임       │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>│  📋 우리 신호등의 동작 설계표                               │
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>│                                                             │
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│  구간              │ LED 상태        │ 추가 효과           │
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│  ─────────────────┼────────────────┼───────────────────   │
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│  30cm 이상 (안전)  │ 🟢 초록 켜짐    │ 계속 켜짐 (안정)    │
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│  10~30cm (주의)    │ 🟡 노랑 켜짐    │ 천천히 깜빡임       │
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>│  10cm 이하 (위험)  │ 🔴 빨강 켜짐    │ 빠르게 깜빡임       │
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>│                                                             │
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: 코드 짜기 전에 "이 상황엔 이렇게"를 표로 정리하면 헷갈리지 않아!</p>
 <hr />
 <h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
@@ -1292,113 +1366,113 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│  🔌 연결 다이어그램                                         │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  [Grove Shield for Pico]                                    │
-│                                                             │
-│  D16/D17 ──────── [초음파 센서]  📏                        │
-│                    (Trig/Echo)                              │
-│                                                             │
-│  D18 ────────────  [🟢 초록 LED] (안전)                    │
-│                                                             │
-│  D19 ────────────  [🟡 노랑 LED] (주의)                    │
-│                                                             │
-│  D20 ────────────  [🔴 빨강 LED] (위험)                    │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>│  🔌 연결 다이어그램                                         │
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│                                                             │
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>│  [Grove Shield for Pico]                                    │
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│                                                             │
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│  D16/D17 ──────── [초음파 센서]  📏                        │
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>│                    (Trig/Echo)                              │
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│                                                             │
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>│  D18 ────────────  [🟢 초록 LED] (안전)                    │
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│                                                             │
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>│  D19 ────────────  [🟡 노랑 LED] (주의)                    │
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>│                                                             │
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>│  D20 ────────────  [🔴 빨강 LED] (위험)                    │
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>│                                                             │
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <hr />
 <h3 id="step-1">Step 1: 거리 측정 복습<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
 <p><strong>목표</strong>: 초음파 센서로 거리를 정확히 읽어오기 (이전 장 복습)</p>
 <p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 초음파 센서로 거리 측정하기 ===</span>
-<span class="c1"># 이전 장에서 배운 거리 측정 코드를 다시 확인해봐요</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># --- WHY: 초음파 센서 작동 원리 ---</span>
-<span class="c1"># Trig 핀: 초음파 발사 신호</span>
-<span class="c1"># Echo 핀: 반사파 수신 신호</span>
-<span class="c1"># 시간차로 거리 계산!</span>
-
-<span class="c1"># HOW: 핀 설정</span>
-<span class="n">trig</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Trig는 출력 (신호 보내기)</span>
-<span class="n">echo</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>   <span class="c1"># Echo는 입력 (신호 받기)</span>
-
-<span class="k">def</span> <span class="nf">measure_distance</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;거리를 측정해서 cm 단위로 반환&quot;&quot;&quot;</span>
-    <span class="c1"># 초음파 발사</span>
-    <span class="n">trig</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">trig</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">trig</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
-
-    <span class="c1"># 에코 신호 대기</span>
-    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_us</span><span class="p">()</span>
-    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_us</span><span class="p">()</span>
-
-    <span class="c1"># 거리 계산 (소리 속도 = 343m/s, 왕복이니까 /2)</span>
-    <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">*</span> <span class="mf">0.0343</span> <span class="o">/</span> <span class="mi">2</span>
-
-    <span class="k">return</span> <span class="n">distance</span>
-
-<span class="c1"># 테스트: 1초마다 거리 출력</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">dist</span> <span class="o">=</span> <span class="n">measure_distance</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;거리: </span><span class="si">{</span><span class="n">dist</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># === WHAT: 초음파 센서로 거리 측정하기 ===</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># 이전 장에서 배운 거리 측정 코드를 다시 확인해봐요</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># --- WHY: 초음파 센서 작동 원리 ---</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Trig 핀: 초음파 발사 신호</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Echo 핀: 반사파 수신 신호</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># 시간차로 거리 계산!</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># HOW: 핀 설정</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="n">trig</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Trig는 출력 (신호 보내기)</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="n">echo</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>   <span class="c1"># Echo는 입력 (신호 받기)</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="k">def</span> <span class="nf">measure_distance</span><span class="p">():</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;거리를 측정해서 cm 단위로 반환&quot;&quot;&quot;</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="c1"># 초음파 발사</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="n">trig</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="n">trig</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>    <span class="n">trig</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>    <span class="c1"># 에코 신호 대기</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_us</span><span class="p">()</span>
+</span><span id="__span-6-28"><a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>    <span class="k">while</span> <span class="n">echo</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-6-29"><a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_us</span><span class="p">()</span>
+</span><span id="__span-6-30"><a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>
+</span><span id="__span-6-31"><a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="c1"># 거리 계산 (소리 속도 = 343m/s, 왕복이니까 /2)</span>
+</span><span id="__span-6-32"><a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+</span><span id="__span-6-33"><a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="n">distance</span> <span class="o">=</span> <span class="n">duration</span> <span class="o">*</span> <span class="mf">0.0343</span> <span class="o">/</span> <span class="mi">2</span>
+</span><span id="__span-6-34"><a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>
+</span><span id="__span-6-35"><a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>    <span class="k">return</span> <span class="n">distance</span>
+</span><span id="__span-6-36"><a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>
+</span><span id="__span-6-37"><a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="c1"># 테스트: 1초마다 거리 출력</span>
+</span><span id="__span-6-38"><a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-6-39"><a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>    <span class="n">dist</span> <span class="o">=</span> <span class="n">measure_distance</span><span class="p">()</span>
+</span><span id="__span-6-40"><a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;거리: </span><span class="si">{</span><span class="n">dist</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+</span><span id="__span-6-41"><a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div></p>
 <p><strong>실행 결과</strong>:
-<div class="highlight"><pre><span></span><code>거리: 45.2 cm
-거리: 32.1 cm
-거리: 15.8 cm
-거리: 8.3 cm
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>거리: 45.2 cm
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>거리: 32.1 cm
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>거리: 15.8 cm
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>거리: 8.3 cm
+</span></code></pre></div></p>
 <p><strong>여기서 잠깐! 🤔</strong><br />
 손을 센서에 가까이 대거나 멀리하면서 숫자가 바뀌는지 확인해봐. 대략 어느 정도 거리에서 30cm, 10cm가 되는지 감을 잡아두면 좋아!</p>
 <hr />
 <h3 id="step-2-3-led">Step 2: 3색 LED 연결하기<a class="headerlink" href="#step-2-3-led" title="Permanent link">&para;</a></h3>
 <p><strong>목표</strong>: 세 개의 LED를 각각 제어할 수 있게 설정</p>
 <p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 3색 LED 개별 제어 테스트 ===</span>
-<span class="c1"># 초록, 노랑, 빨강 LED가 각각 잘 작동하는지 확인</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="c1"># --- WHY: 각 LED에 다른 핀 할당 ---</span>
-<span class="c1"># 나중에 조건에 따라 하나만 켜거나 끌 수 있도록!</span>
-
-<span class="c1"># HOW: LED 핀 설정</span>
-<span class="n">led_green</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># 초록 = 안전</span>
-<span class="n">led_yellow</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># 노랑 = 주의</span>
-<span class="n">led_red</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>     <span class="c1"># 빨강 = 위험</span>
-
-<span class="c1"># 테스트: 순서대로 켜보기</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;초록 LED 테스트&quot;</span><span class="p">)</span>
-<span class="n">led_green</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">led_green</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;노랑 LED 테스트&quot;</span><span class="p">)</span>
-<span class="n">led_yellow</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">led_yellow</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;빨강 LED 테스트&quot;</span><span class="p">)</span>
-<span class="n">led_red</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">led_red</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;테스트 완료!&quot;</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># === WHAT: 3색 LED 개별 제어 테스트 ===</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># 초록, 노랑, 빨강 LED가 각각 잘 작동하는지 확인</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># --- WHY: 각 LED에 다른 핀 할당 ---</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># 나중에 조건에 따라 하나만 켜거나 끌 수 있도록!</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># HOW: LED 핀 설정</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">led_green</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># 초록 = 안전</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">led_yellow</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># 노랑 = 주의</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="n">led_red</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>     <span class="c1"># 빨강 = 위험</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1"># 테스트: 순서대로 켜보기</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;초록 LED 테스트&quot;</span><span class="p">)</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">led_green</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="n">led_green</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;노랑 LED 테스트&quot;</span><span class="p">)</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="n">led_yellow</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="n">led_yellow</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;빨강 LED 테스트&quot;</span><span class="p">)</span>
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="n">led_red</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="n">led_red</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;테스트 완료!&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
 <p><strong>실행 결과</strong>:
 ```
 초록 LED 테스트
@@ -1459,10 +1533,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/title-link.js"></script>
       
     
   </body>

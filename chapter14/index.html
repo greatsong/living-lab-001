@@ -9,7 +9,7 @@
         <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
       
       
@@ -25,11 +25,14 @@
     
     
       
-        <title>2주차 통합 미션 - 스마트 접근 알림 시스템 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+        <title>2주차 통합 미션 - 스마트 접근 알림 시스템 - Living Lab 테스트</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -43,10 +46,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pretendard,+Noto+Sans+KR,+sans-serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+monospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Pretendard, Noto Sans KR, sans-serif";--md-code-font:"JetBrains Mono, monospace"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -57,7 +62,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -80,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-header__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,7 +106,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            교실 리빙랩: 측정을 넘어 문제해결까지
+            Living Lab 테스트
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -106,6 +118,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -200,6 +238,8 @@
           
   
   
+    
+  
   Part 1 - 입력과 출력의 기초
 
         </a>
@@ -221,6 +261,8 @@
         <a href="../chapter08/" class="md-tabs__link">
           
   
+  
+    
   
   Part 2 - 거리와 빛으로 세상 감지
 
@@ -252,13 +294,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-nav__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    교실 리빙랩: 측정을 넘어 문제해결까지
+    Living Lab 테스트
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -297,6 +339,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -554,6 +612,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1123,35 +1197,35 @@
 </blockquote>
 <hr />
 <h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 조도센서와 거리센서를 <strong>하나의 시스템</strong>으로 통합할 수 있다</li>
-<li>[ ] 거리에 따른 <strong>다단계 경고</strong>(시각 + 청각)를 구현할 수 있다</li>
-<li>[ ] 환경 조건(밝기)에 따라 <strong>동작을 변경</strong>하는 로직을 만들 수 있다</li>
-<li>[ ] 실제 설치 장소를 고려한 <strong>프로토타입</strong>을 완성할 수 있다</li>
-<li>[ ] 2주차에 배운 모든 개념을 <strong>종합 활용</strong>할 수 있다</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 조도센서와 거리센서를 <strong>하나의 시스템</strong>으로 통합할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 거리에 따른 <strong>다단계 경고</strong>(시각 + 청각)를 구현할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 환경 조건(밝기)에 따라 <strong>동작을 변경</strong>하는 로직을 만들 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 실제 설치 장소를 고려한 <strong>프로토타입</strong>을 완성할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 2주차에 배운 모든 개념을 <strong>종합 활용</strong>할 수 있다</li>
 </ul>
 <hr />
 <h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│  🏠 현관 자동 조명         🚗 후방 감지 센서                 │
-│  ┌─────────────┐          ┌─────────────┐                  │
-│  │  어두우면   │          │ 가까워지면  │                  │
-│  │  + 사람 오면│          │ 삐삐빅!     │                  │
-│  │  = 불 켜짐  │          │             │                  │
-│  └─────────────┘          └─────────────┘                  │
-│                                                             │
-│  🏪 자동문                 📱 스마트폰 근접 센서            │
-│  ┌─────────────┐          ┌─────────────┐                  │
-│  │ 다가가면    │          │ 얼굴 가까이 │                  │
-│  │ 문이 열림   │          │ → 화면 꺼짐 │                  │
-│  └─────────────┘          └─────────────┘                  │
-│                                                             │
-│         💡 이 모든 것의 공통점?                              │
-│         → &quot;센서 조합 + 조건에 따른 반응&quot;                     │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│                                                             │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  🏠 현관 자동 조명         🚗 후방 감지 센서                 │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  ┌─────────────┐          ┌─────────────┐                  │
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  │  어두우면   │          │ 가까워지면  │                  │
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  │  + 사람 오면│          │ 삐삐빅!     │                  │
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  │  = 불 켜짐  │          │             │                  │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  └─────────────┘          └─────────────┘                  │
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│                                                             │
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  🏪 자동문                 📱 스마트폰 근접 센서            │
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  ┌─────────────┐          ┌─────────────┐                  │
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  │ 다가가면    │          │ 얼굴 가까이 │                  │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│  │ 문이 열림   │          │ → 화면 꺼짐 │                  │
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│  └─────────────┘          └─────────────┘                  │
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│                                                             │
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│         💡 이 모든 것의 공통점?                              │
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│         → &quot;센서 조합 + 조건에 따른 반응&quot;                     │
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│                                                             │
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p>2주차 동안 조도센서와 거리센서를 <strong>따로따로</strong> 배웠어. 이제 이것들을 <strong>합쳐서</strong> 진짜 쓸모 있는 물건을 만들어볼 시간이야!</p>
 <p>실제 세상의 스마트 기기들은 <strong>하나의 센서</strong>만 쓰는 경우가 거의 없어. 여러 센서를 조합해서 더 똑똑하게 동작하지. 오늘 만들 "스마트 접근 알림 시스템"은:</p>
 <ol>
@@ -1166,95 +1240,95 @@
 <p><strong>비유로 시작</strong>: 너의 몸은 다중 센서 시스템이야. 눈(시각) + 귀(청각) + 피부(촉각)가 동시에 정보를 수집해서 뇌가 종합 판단하지. 눈만으로는 뒤에서 다가오는 사람을 모르지만, 귀가 발소리를 듣고 알려주잖아?</p>
 <p><strong>정확한 정의</strong>: 다중 센서 시스템은 <strong>2개 이상의 센서</strong>에서 데이터를 동시에 수집하고, 이를 <strong>조합하여 판단</strong>하는 시스템이야.</p>
 <p><strong>예시로 확인</strong>:
-<div class="highlight"><pre><span></span><code>단일 센서:  거리 &lt; 30cm  →  경고
-다중 센서:  거리 &lt; 30cm  AND  어두움  →  더 강한 경고
-                                        (밤에는 더 민감하게!)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>단일 센서:  거리 &lt; 30cm  →  경고
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>다중 센서:  거리 &lt; 30cm  AND  어두움  →  더 강한 경고
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                                        (밤에는 더 민감하게!)
+</span></code></pre></div></p>
 <p><strong>쉽게 말하면</strong>: 센서 여러 개를 합치면 더 똑똑한 판단이 가능해!</p>
 <hr />
 <h3 id="2">개념 2: 다단계 경고 시스템<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <p><strong>비유로 시작</strong>: 자동차 후방 센서 생각해봐. 멀 때는 "삐...삐...삐", 가까워지면 "삐.삐.삐", 아주 가까우면 "삐삐삐삐삐!" 이렇게 <strong>거리에 따라 경고 강도가 달라지지</strong>.</p>
 <p><strong>정확한 정의</strong>: 측정값의 <strong>범위를 여러 단계로 나누고</strong>, 각 단계마다 <strong>다른 출력</strong>을 제공하는 시스템이야.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                     다단계 경고 구조                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  거리(cm)   0     10      30       50      ∞                │
-│            ├──────┼───────┼────────┼───────┤               │
-│            │위험⚠️ │ 주의🟡 │ 안전🟢  │ 무반응 │               │
-│            │      │       │        │       │               │
-│  LED       │빨강🔴 │노랑🟡  │초록🟢   │ 꺼짐   │               │
-│  부저      │경고음 │짧은 삐 │ 없음    │ 없음   │               │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│                     다단계 경고 구조                          │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│                                                             │
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│  거리(cm)   0     10      30       50      ∞                │
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│            ├──────┼───────┼────────┼───────┤               │
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│            │위험⚠️ │ 주의🟡 │ 안전🟢  │ 무반응 │               │
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│            │      │       │        │       │               │
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│  LED       │빨강🔴 │노랑🟡  │초록🟢   │ 꺼짐   │               │
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│  부저      │경고음 │짧은 삐 │ 없음    │ 없음   │               │
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│                                                             │
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>쉽게 말하면</strong>: 센서 값에 따라 "안전/주의/위험" 같은 단계를 만들어 반응해!</p>
 <hr />
 <h3 id="3">개념 3: 환경 적응 로직<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p><strong>비유로 시작</strong>: 휴대폰 자동 밝기 기능처럼! 밝은 곳에서는 화면이 밝아지고, 어두운 곳에서는 어두워지잖아. 환경에 <strong>맞춰서</strong> 동작이 바뀌는 거야.</p>
 <p><strong>정확한 정의</strong>: 센서 A의 값에 따라 <strong>센서 B의 동작 기준(임계값)</strong>이나 <strong>출력 방식</strong>을 변경하는 로직이야.</p>
 <p><strong>예시로 확인</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># 환경 적응 로직 예시</span>
-<span class="k">if</span> <span class="n">조도</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">:</span>  <span class="c1"># 어두운 환경</span>
-    <span class="n">경고_거리</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># 더 먼 거리에서도 경고 (민감하게)</span>
-<span class="k">else</span><span class="p">:</span>           <span class="c1"># 밝은 환경</span>
-    <span class="n">경고_거리</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># 가까이 와야 경고 (덜 민감하게)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 환경 적응 로직 예시</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span> <span class="n">조도</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">:</span>  <span class="c1"># 어두운 환경</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">경고_거리</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># 더 먼 거리에서도 경고 (민감하게)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">else</span><span class="p">:</span>           <span class="c1"># 밝은 환경</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">경고_거리</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># 가까이 와야 경고 (덜 민감하게)</span>
+</span></code></pre></div></p>
 <p><strong>쉽게 말하면</strong>: 밤에는 예민하게, 낮에는 느긋하게 반응하도록!</p>
 <hr />
 <h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-">Step 1: 회로 연결 - 모든 부품 합체!<a class="headerlink" href="#step-1-" title="Permanent link">&para;</a></h3>
 <p><strong>목표</strong>: 조도센서, 거리센서, LED 3개, 부저를 모두 연결</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                    스마트 접근 알림 시스템                     │
-│                      전체 회로 구성                           │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│   [Raspberry Pi Pico]                                       │
-│   ┌─────────────────┐                                       │
-│   │                 │                                       │
-│   │ GP28 ←─────────── [조도센서] (A2 포트)                  │
-│   │                 │    │                                  │
-│   │ GP6  ──────────── [초음파 Trig]                         │
-│   │ GP7  ←─────────── [초음파 Echo] (D7 포트)               │
-│   │                 │                                       │
-│   │ GP18 ──────────→ [빨간 LED] (D18 포트)                  │
-│   │ GP19 ──────────→ [노란 LED] (D19 포트)                  │
-│   │ GP20 ──────────→ [초록 LED] (D20 포트)                  │
-│   │                 │                                       │
-│   │ GP16 ──────────→ [부저] (D16 포트)                      │
-│   │                 │                                       │
-│   └─────────────────┘                                       │
-│                                                             │
-│  📍 Grove Shield 포트 연결:                                  │
-│     • A2 포트 → 조도센서                                     │
-│     • D7 포트 → 초음파 거리센서                              │
-│     • D18 포트 → 빨간 LED                                   │
-│     • D19 포트 → 노란 LED                                   │
-│     • D20 포트 → 초록 LED                                   │
-│     • D16 포트 → 부저                                       │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>│                    스마트 접근 알림 시스템                     │
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>│                      전체 회로 구성                           │
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>├─────────────────────────────────────────────────────────────┤
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>│                                                             │
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>│   [Raspberry Pi Pico]                                       │
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>│   ┌─────────────────┐                                       │
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>│   │                 │                                       │
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>│   │ GP28 ←─────────── [조도센서] (A2 포트)                  │
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>│   │                 │    │                                  │
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>│   │ GP6  ──────────── [초음파 Trig]                         │
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>│   │ GP7  ←─────────── [초음파 Echo] (D7 포트)               │
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>│   │                 │                                       │
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>│   │ GP18 ──────────→ [빨간 LED] (D18 포트)                  │
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>│   │ GP19 ──────────→ [노란 LED] (D19 포트)                  │
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>│   │ GP20 ──────────→ [초록 LED] (D20 포트)                  │
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>│   │                 │                                       │
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>│   │ GP16 ──────────→ [부저] (D16 포트)                      │
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>│   │                 │                                       │
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>│   └─────────────────┘                                       │
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>│                                                             │
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>│  📍 Grove Shield 포트 연결:                                  │
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>│     • A2 포트 → 조도센서                                     │
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>│     • D7 포트 → 초음파 거리센서                              │
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>│     • D18 포트 → 빨간 LED                                   │
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>│     • D19 포트 → 노란 LED                                   │
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>│     • D20 포트 → 초록 LED                                   │
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>│     • D16 포트 → 부저                                       │
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>│                                                             │
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>실제 연결 모습</strong>:
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│        [조도센서]         [초음파센서]                        │
-│            │                  │                             │
-│            ▼                  ▼                             │
-│  ┌─────────────────────────────────────┐                   │
-│  │     Grove Shield for Pico           │                   │
-│  │  ┌─────────────────────────────┐   │                   │
-│  │  │    Raspberry Pi Pico        │   │                   │
-│  │  └─────────────────────────────┘   │                   │
-│  └─────────────────────────────────────┘                   │
-│            │       │       │       │                        │
-│            ▼       ▼       ▼       ▼                        │
-│        [빨강]   [노랑]   [초록]   [부저]                      │
-│         LED      LED      LED                               │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>│                                                             │
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>│        [조도센서]         [초음파센서]                        │
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│            │                  │                             │
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>│            ▼                  ▼                             │
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│  ┌─────────────────────────────────────┐                   │
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│  │     Grove Shield for Pico           │                   │
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>│  │  ┌─────────────────────────────┐   │                   │
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│  │  │    Raspberry Pi Pico        │   │                   │
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>│  │  └─────────────────────────────┘   │                   │
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│  └─────────────────────────────────────┘                   │
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>│            │       │       │       │                        │
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>│            ▼       ▼       ▼       ▼                        │
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>│        [빨강]   [노랑]   [초록]   [부저]                      │
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>│         LED      LED      LED                               │
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>│                                                             │
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div></p>
 <p><strong>여기서 잠깐! 🤔</strong></p>
 <blockquote>
 <p>부품이 많아서 복잡해 보이지만, 각각은 이미 배운 것들이야!
@@ -1382,10 +1456,14 @@ else:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/title-link.js"></script>
       
     
   </body>

@@ -9,7 +9,7 @@
         <meta name="description" content="센서로 세상을 감지하고 액추에이터로 실제 문제를 해결하는 피지컬 컴퓨팅 입문서. AI 바이브 코딩을 활용해 학교를 바꾸는 프로토타입을 만들어봅니다.">
       
       
-        <meta name="author" content="Created with Data-AI-Book Generator">
+        <meta name="author" content="Created with EduFlow">
       
       
       
@@ -27,11 +27,14 @@
     
     
       
-        <title>빛을 숫자로 - 조도센서 기초 - 교실 리빙랩: 측정을 넘어 문제해결까지</title>
+        <title>빛을 숫자로 - 조도센서 기초 - Living Lab 테스트</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,10 +48,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pretendard,+Noto+Sans+KR,+sans-serif:300,300i,400,400i,700,700i%7CJetBrains+Mono,+monospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Pretendard, Noto Sans KR, sans-serif";--md-code-font:"JetBrains Mono, monospace"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -59,7 +64,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-header__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-header__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -96,7 +108,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            교실 리빙랩: 측정을 넘어 문제해결까지
+            Living Lab 테스트
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -108,6 +120,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -202,6 +240,8 @@
           
   
   
+    
+  
   Part 1 - 입력과 출력의 기초
 
         </a>
@@ -223,6 +263,8 @@
         <a href="./" class="md-tabs__link">
           
   
+  
+    
   
   Part 2 - 거리와 빛으로 세상 감지
 
@@ -254,13 +296,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="교실 리빙랩: 측정을 넘어 문제해결까지" class="md-nav__button md-logo" aria-label="교실 리빙랩: 측정을 넘어 문제해결까지" data-md-component="logo">
+    <a href=".." title="Living Lab 테스트" class="md-nav__button md-logo" aria-label="Living Lab 테스트" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    교실 리빙랩: 측정을 넘어 문제해결까지
+    Living Lab 테스트
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -299,6 +341,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -556,6 +614,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1177,49 +1251,49 @@
 
 <h1 id="8-">챕터 8: 빛을 숫자로 - 조도센서 기초<a class="headerlink" href="#8-" title="Permanent link">&para;</a></h1>
 <h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[ ] 아날로그와 디지털의 차이를 설명할 수 있다</li>
-<li>[ ] ADC(아날로그-디지털 변환)의 개념을 이해할 수 있다</li>
-<li>[ ] 조도센서를 Pico에 연결하고 빛의 밝기를 숫자로 읽을 수 있다</li>
-<li>[ ] 조도 값의 의미를 해석하고 다양한 환경에서 테스트할 수 있다</li>
-<li>[ ] 조도센서를 활용한 프로젝트 아이디어를 구상할 수 있다</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 아날로그와 디지털의 차이를 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> ADC(아날로그-디지털 변환)의 개념을 이해할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 조도센서를 Pico에 연결하고 빛의 밝기를 숫자로 읽을 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 조도 값의 의미를 해석하고 다양한 환경에서 테스트할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 조도센서를 활용한 프로젝트 아이디어를 구상할 수 있다</li>
 </ul>
 <hr />
 <h2 id="_2">💡 왜 이걸 배우나요?<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>지금까지 버튼은 "눌림/안눌림" 두 가지뿐이었어. 세상을 0과 1로만 보는 거지.</p>
 <p>하지만 진짜 세상은 어때?</p>
-<div class="highlight"><pre><span></span><code>☀️ 햇빛이 쨍쨍한 날     → 아주 밝음
-🌤️ 흐린 날              → 약간 밝음  
-🏠 실내 형광등          → 중간 밝음
-🌙 밤에 스탠드만        → 어두움
-🌑 불 다 끈 방          → 아주 어두움
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>☀️ 햇빛이 쨍쨍한 날     → 아주 밝음
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>🌤️ 흐린 날              → 약간 밝음  
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>🏠 실내 형광등          → 중간 밝음
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>🌙 밤에 스탠드만        → 어두움
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>🌑 불 다 끈 방          → 아주 어두움
+</span></code></pre></div>
 <p>밝기는 "밝다/어둡다" 두 가지가 아니라 <strong>무한히 많은 단계</strong>가 있어.
 이걸 어떻게 컴퓨터에게 전달할 수 있을까?</p>
 <p>바로 <strong>아날로그 센서</strong>와 <strong>ADC</strong>의 마법이야!</p>
 <h3 id="_3">실생활에서 조도센서는 어디에?<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│  📱 스마트폰 화면     → 어두우면 자동으로 화면 밝기 낮춤    │
-│  🚗 자동차 헤드라이트 → 터널 들어가면 자동으로 켜짐        │
-│  💡 가로등           → 해 지면 자동으로 켜짐               │
-│  🌱 스마트 화분      → 빛 부족하면 LED 성장등 켜짐         │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│  📱 스마트폰 화면     → 어두우면 자동으로 화면 밝기 낮춤    │
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│  🚗 자동차 헤드라이트 → 터널 들어가면 자동으로 켜짐        │
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│  💡 가로등           → 해 지면 자동으로 켜짐               │
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│  🌱 스마트 화분      → 빛 부족하면 LED 성장등 켜짐         │
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p>이번 챕터에서 배우면, 너도 이런 것들을 직접 만들 수 있어!</p>
 <hr />
 <h2 id="_4">📚 핵심 개념<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="1-vs">개념 1: 디지털 vs 아날로그<a class="headerlink" href="#1-vs" title="Permanent link">&para;</a></h3>
 <p><strong>비유로 시작</strong>: 디지털은 계단, 아날로그는 경사로야.</p>
-<div class="highlight"><pre><span></span><code>디지털 (계단)              아날로그 (경사로)
-    ┌───┐                      ╱
-    │   │                    ╱
-┌───┘   └───┐              ╱
-│           │            ╱
-┘           └───       ╱
-
-딱딱 끊어지는 값         부드럽게 연속되는 값
-0 또는 1만 가능          무한히 많은 값 가능
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>디지털 (계단)              아날로그 (경사로)
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    ┌───┐                      ╱
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    │   │                    ╱
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>┌───┘   └───┐              ╱
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│           │            ╱
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>┘           └───       ╱
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>딱딱 끊어지는 값         부드럽게 연속되는 값
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>0 또는 1만 가능          무한히 많은 값 가능
+</span></code></pre></div>
 <p><strong>정확히 말하면</strong>: 
 - <strong>디지털(Digital)</strong>: 정해진 값만 가질 수 있어. 버튼은 0(안눌림) 또는 1(눌림) 딱 두 개.
 - <strong>아날로그(Analog)</strong>: 연속적인 값을 가질 수 있어. 밝기, 온도, 소리 크기 등 자연의 모든 것.</p>
@@ -1234,67 +1308,67 @@
 <hr />
 <h3 id="2-adc-">개념 2: ADC (아날로그-디지털 변환)<a class="headerlink" href="#2-adc-" title="Permanent link">&para;</a></h3>
 <p><strong>비유로 시작</strong>: ADC는 "아날로그 통역사"야.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   🌞 빛 (아날로그)                                          │
-│        │                                                    │
-│        ▼                                                    │
-│   ┌─────────┐                                               │
-│   │  조도   │  &quot;지금 밝기가 이 정도야&quot;                      │
-│   │  센서   │  (전압으로 표현)                              │
-│   └────┬────┘                                               │
-│        │ 전압 (0V ~ 3.3V) ← 아날로그 신호                   │
-│        ▼                                                    │
-│   ┌─────────┐                                               │
-│   │  ADC    │  &quot;0V~3.3V를 0~65535 숫자로 바꿔줄게!&quot;        │
-│   │ (변환기)│                                               │
-│   └────┬────┘                                               │
-│        │ 숫자 (0 ~ 65535) ← 디지털 값                       │
-│        ▼                                                    │
-│   ┌─────────┐                                               │
-│   │  Pico   │  &quot;오! 지금 32000이네. 중간 밝기구나!&quot;        │
-│   │  코드   │                                               │
-│   └─────────┘                                               │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>│                                                             │
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   🌞 빛 (아날로그)                                          │
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│        │                                                    │
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│        ▼                                                    │
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│   ┌─────────┐                                               │
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│   │  조도   │  &quot;지금 밝기가 이 정도야&quot;                      │
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>│   │  센서   │  (전압으로 표현)                              │
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│   └────┬────┘                                               │
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│        │ 전압 (0V ~ 3.3V) ← 아날로그 신호                   │
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>│        ▼                                                    │
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>│   ┌─────────┐                                               │
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>│   │  ADC    │  &quot;0V~3.3V를 0~65535 숫자로 바꿔줄게!&quot;        │
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>│   │ (변환기)│                                               │
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>│   └────┬────┘                                               │
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>│        │ 숫자 (0 ~ 65535) ← 디지털 값                       │
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>│        ▼                                                    │
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>│   ┌─────────┐                                               │
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>│   │  Pico   │  &quot;오! 지금 32000이네. 중간 밝기구나!&quot;        │
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>│   │  코드   │                                               │
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>│   └─────────┘                                               │
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>│                                                             │
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>정확히 말하면</strong>: 
 - <strong>ADC (Analog-to-Digital Converter)</strong>: 아날로그 신호(전압)를 디지털 숫자로 변환하는 장치
 - Pico의 ADC는 <strong>16비트</strong> → 0부터 65535까지 (2^16 = 65,536가지) 표현 가능</p>
 <p><strong>왜 65535일까?</strong>
-<div class="highlight"><pre><span></span><code>16비트 = 16자리 이진수
-가장 큰 값 = 1111111111111111 (2진수)
-         = 65535 (10진수)
-
-0V   → 0
-3.3V → 65535
-1.65V → 약 32768 (중간)
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>16비트 = 16자리 이진수
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>가장 큰 값 = 1111111111111111 (2진수)
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>         = 65535 (10진수)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>0V   → 0
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>3.3V → 65535
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>1.65V → 약 32768 (중간)
+</span></code></pre></div></p>
 <p><strong>쉽게 말하면</strong>: ADC는 "이 정도 밝기면 숫자로 32000쯤 되겠다"라고 번역해주는 통역사야.</p>
 <hr />
 <h3 id="3">개념 3: 조도센서의 원리<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p><strong>비유로 시작</strong>: 조도센서는 "빛을 먹고 전기를 내뿜는 작은 태양광 패널" 같아.</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   빛이 강할 때 (밝음)         빛이 약할 때 (어두움)         │
-│                                                             │
-│      ☀️☀️☀️                        🌙                      │
-│        │││                          │                       │
-│        ▼▼▼                          ▼                       │
-│   ┌─────────┐                  ┌─────────┐                  │
-│   │ 조도    │                  │ 조도    │                  │
-│   │ 센서    │                  │ 센서    │                  │
-│   └────┬────┘                  └────┬────┘                  │
-│        │                            │                       │
-│   높은 전압 출력                낮은 전압 출력              │
-│   (3.0V 근처)                   (0.5V 근처)                 │
-│        │                            │                       │
-│        ▼                            ▼                       │
-│   ADC → 큰 숫자                ADC → 작은 숫자              │
-│   (50000~65535)                (0~10000)                    │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>│                                                             │
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>│   빛이 강할 때 (밝음)         빛이 약할 때 (어두움)         │
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│                                                             │
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>│      ☀️☀️☀️                        🌙                      │
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│        │││                          │                       │
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│        ▼▼▼                          ▼                       │
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>│   ┌─────────┐                  ┌─────────┐                  │
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│   │ 조도    │                  │ 조도    │                  │
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>│   │ 센서    │                  │ 센서    │                  │
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│   └────┬────┘                  └────┬────┘                  │
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>│        │                            │                       │
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>│   높은 전압 출력                낮은 전압 출력              │
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>│   (3.0V 근처)                   (0.5V 근처)                 │
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>│        │                            │                       │
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>│        ▼                            ▼                       │
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>│   ADC → 큰 숫자                ADC → 작은 숫자              │
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>│   (50000~65535)                (0~10000)                    │
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>│                                                             │
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>정확히 말하면</strong>: 
 - 조도센서 안에는 <strong>포토레지스터</strong> 또는 <strong>포토다이오드</strong>가 있어
 - 빛을 받으면 전기적 특성이 변해서 전압이 달라짐
@@ -1309,9 +1383,9 @@
 <blockquote>
 <p><strong>잠깐!</strong> 디지털은 0과 1뿐이라면서, 왜 0~65535까지 숫자가 나와?</p>
 <p>좋은 질문이야! 65535도 결국 0과 1의 조합이야.
-<div class="highlight"><pre><span></span><code>32768 = 1000000000000000 (2진수, 16자리)
-65535 = 1111111111111111 (2진수, 16자리)
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>32768 = 1000000000000000 (2진수, 16자리)
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>65535 = 1111111111111111 (2진수, 16자리)
+</span></code></pre></div>
 컴퓨터는 내부적으로 모든 걸 0과 1로 처리하지만,
 우리에게는 편하게 10진수로 보여주는 거야!</p>
 </blockquote>
@@ -1325,26 +1399,26 @@
 - Grove 조도센서 (Light Sensor v1.2)
 - Grove 케이블 1개</p>
 <p><strong>연결 방법</strong>:</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│  Grove Shield for Pico                                      │
-│                                                             │
-│   ┌─────────────────────────────────────┐                   │
-│   │                                     │                   │
-│   │    [A0] [A1] [A2]  ← 아날로그 포트  │                   │
-│   │     ↑                               │                   │
-│   │     │                               │                   │
-│   │  조도센서                           │                   │
-│   │  연결                               │                   │
-│   │                                     │                   │
-│   │    [D16] [D18] [D20] ← 디지털 포트  │                   │
-│   │                                     │                   │
-│   └─────────────────────────────────────┘                   │
-│                                                             │
-│   ⚠️ 조도센서는 반드시 A0, A1, A2 중 하나에 연결!          │
-│      (디지털 포트에 연결하면 안 돼요)                       │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>┌─────────────────────────────────────────────────────────────┐
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>│  Grove Shield for Pico                                      │
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│                                                             │
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   ┌─────────────────────────────────────┐                   │
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│   │                                     │                   │
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│   │    [A0] [A1] [A2]  ← 아날로그 포트  │                   │
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>│   │     ↑                               │                   │
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>│   │     │                               │                   │
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>│   │  조도센서                           │                   │
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>│   │  연결                               │                   │
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>│   │                                     │                   │
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>│   │    [D16] [D18] [D20] ← 디지털 포트  │                   │
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>│   │                                     │                   │
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>│   └─────────────────────────────────────┘                   │
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>│                                                             │
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>│   ⚠️ 조도센서는 반드시 A0, A1, A2 중 하나에 연결!          │
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>│      (디지털 포트에 연결하면 안 돼요)                       │
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>│                                                             │
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>└─────────────────────────────────────────────────────────────┘
+</span></code></pre></div>
 <p><strong>연결 순서</strong>:
 1. Pico를 Grove Shield에 꽂는다 (USB 포트 방향 확인!)
 2. Grove 케이블의 한쪽을 조도센서에 연결
@@ -1362,30 +1436,30 @@ D16, D18 같은 디지털 포트에 연결하면 제대로 값을 읽을 수 없
 <h3 id="step-2-">Step 2: 첫 번째 코드 - 조도 값 읽기<a class="headerlink" href="#step-2-" title="Permanent link">&para;</a></h3>
 <p><strong>목표</strong>: 조도센서의 값을 읽어서 화면에 출력한다.</p>
 <p><strong>코드</strong>:
-<div class="highlight"><pre><span></span><code><span class="c1"># === WHAT: 조도센서 값 읽기 ===</span>
-<span class="c1"># 조도센서로 현재 밝기를 측정해서 숫자로 출력하는 코드</span>
-
-<span class="c1"># --- WHY: 필요한 이유 ---</span>
-<span class="c1"># 빛의 밝기를 숫자로 알아야 &quot;어두우면 불 켜기&quot; 같은 자동화가 가능해</span>
-
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>  <span class="c1"># ADC: 아날로그 값을 읽는 기능</span>
-<span class="kn">import</span> <span class="nn">time</span>                    <span class="c1"># time: 시간 관련 기능</span>
-
-<span class="c1"># HOW: 조도센서 설정</span>
-<span class="c1"># A0 포트는 GPIO 26번에 연결되어 있음</span>
-<span class="n">light_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>    <span class="c1"># ADC 객체 생성, GPIO 26번 사용</span>
-
-<span class="c1"># 무한 반복하며 값 읽기</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="c1"># 조도센서 값 읽기 (0 ~ 65535)</span>
-    <span class="n">light_value</span> <span class="o">=</span> <span class="n">light_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>  <span class="c1"># u16 = unsigned 16-bit (0~65535)</span>
-
-    <span class="c1"># 화면에 출력</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;밝기:&quot;</span><span class="p">,</span> <span class="n">light_value</span><span class="p">)</span>
-
-    <span class="c1"># 0.5초 대기 (너무 빠르면 읽기 힘들어)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># === WHAT: 조도센서 값 읽기 ===</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># 조도센서로 현재 밝기를 측정해서 숫자로 출력하는 코드</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># --- WHY: 필요한 이유 ---</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># 빛의 밝기를 숫자로 알아야 &quot;어두우면 불 켜기&quot; 같은 자동화가 가능해</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>  <span class="c1"># ADC: 아날로그 값을 읽는 기능</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="kn">import</span> <span class="nn">time</span>                    <span class="c1"># time: 시간 관련 기능</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># HOW: 조도센서 설정</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c1"># A0 포트는 GPIO 26번에 연결되어 있음</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">light_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>    <span class="c1"># ADC 객체 생성, GPIO 26번 사용</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># 무한 반복하며 값 읽기</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>    <span class="c1"># 조도센서 값 읽기 (0 ~ 65535)</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    <span class="n">light_value</span> <span class="o">=</span> <span class="n">light_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>  <span class="c1"># u16 = unsigned 16-bit (0~65535)</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="c1"># 화면에 출력</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;밝기:&quot;</span><span class="p">,</span> <span class="n">light_value</span><span class="p">)</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>    <span class="c1"># 0.5초 대기 (너무 빠르면 읽기 힘들어)</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span></code></pre></div></p>
 <p><strong>실행 결과</strong> (환경에 따라 다름):
 ```
 밝기: 45231</p>
@@ -1444,10 +1518,14 @@ D16, D18 같은 디지털 포트에 연결하면 제대로 값을 읽을 수 없
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+        <script src="../javascripts/title-link.js"></script>
       
     
   </body>
